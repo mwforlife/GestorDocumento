@@ -12,11 +12,30 @@ $(function() {
 	
 	$('#example1').DataTable({
 		language: {
-			searchPlaceholder: 'Search...',
+			searchPlaceholder: 'Buscar..',
 			sSearch: '',
-			lengthMenu: '_MENU_ items/page',
-		}
+			lengthMenu: '_MENU_ datos/página',
+         zeroRecords: 'No se encontraron resultados',
+         info: 'Mostrando página _PAGE_ de _PAGES_',
+         infoEmpty: 'No hay datos disponibles',
+         infoFiltered: '(filtrado de _MAX_ datos totales)',
+         paginate: {
+            first:      'Primero',
+            previous:   'Anterior',
+            next:       'Siguiente',
+            last:       'Último'
+         },
+		},
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true,
+      "responsive": true,
+      buttons: [ 'copy', 'excel', 'pdf', 'colvis' ]
 	});
+
 	$('#example2').DataTable({
 		responsive: true,
 		language: {
