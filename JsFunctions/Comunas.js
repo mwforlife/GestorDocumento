@@ -1,11 +1,11 @@
-$(document).ready(function(){
-    $("#RegionForm").on("submit", function(e){
+$(document).ready(function () {
+    $("#ComunaForm").on("submit", function(e){
         e.preventDefault();
         var form = $(this);
         var data = form.serialize();
         $.ajax({
             type: "POST",
-            url: "php/insert/regiones.php",
+            url: "php/insert/comunas.php",
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
@@ -22,10 +22,11 @@ $(document).ready(function(){
     );
 });
 
+
 function Editar(id){
     $.ajax({
         type: "POST",
-        url: "php/cargaredit/regiones.php",
+        url: "php/cargaredit/comunas.php",
         data: {id: id},
         success: function(data){
             $(".content").html(data);            
@@ -33,12 +34,11 @@ function Editar(id){
     });
 }
 
-function actualizarregion(id){
+function actualizarcomuna(id){
     var nombre = $("#nombre").val();
-
     $.ajax({
         type: "POST",
-        url: "php/update/regiones.php",
+        url: "php/update/comunas.php",
         data: {id: id, nombre: nombre},
         success: function(data){
             if(data == 1 || data == "1"){
@@ -67,7 +67,7 @@ function Eliminar(id){
         if (result.value) {
             $.ajax({
                 type: "POST",
-                url: "php/eliminar/regiones.php",
+                url: "php/eliminar/comunas.php",
                 data: {id: id},
                 success: function(data){
                     if(data == 1 || data == "1"){
@@ -85,8 +85,4 @@ function Eliminar(id){
         }
     });
 
-}
-
-window.onload = function(){
-    $("#RegionName").focus();
 }

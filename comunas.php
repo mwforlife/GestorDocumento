@@ -1,5 +1,21 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+$nombre ="";
+$id=0;
+if (isset($_GET['code'])) {
+    $id = $_GET['code'];
+    $region = $c->buscarregion($id);
+    if ($region != null) {
+        $nombre = $region->getNombre();
+        $id = $region->getId();
+    } else {
+        header("Location: regiones.php");
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 
 		<meta charset="utf-8">
@@ -19,6 +35,7 @@
 
 		<!-- Icons css-->
 		<link href="assets/css/icons.css" rel="stylesheet"/>
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
 		<!-- Style css-->
 		<link href="assets/css/style.css" rel="stylesheet">
@@ -441,18 +458,95 @@
 
 				<div class="container-fluid">
 					<div class="inner-body">
-
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Bitcoin</h1>
+								<h1 class="main-content-title tx-30">Comunas</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h6 class="main-content-label mb-1">Region: <?php echo $nombre?></h6>
+								</div>
+							</div>
 						</div>
 						<!-- End Page Header -->
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card orverflow-hidden">
+								<div class="card-body">
+									<div>
+										<h6 class="main-content-label mb-1">Registro de Comunas</h6>
+										<p class="text-mutted card-sub-title"></p>
+									</div>
+									<form id="ComunaForm" name="ComunaForm" action="" class="needs-validation was-validated">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group has-success mg-b-0">
+													<input  class="form-control" id="ComunaID" name="ComunaID" placeholder="ID Comuna" required="" type="text" value="">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group has-success mg-b-0">
+													<input  class="form-control" id="ComunaName" name="ComunaName" placeholder="Nombre Comuna" required="" type="text" value="">
+												</div>
+											</div>
+											<input type="hidden" value="<?php echo $id; ?>" name="RegionId">
+											<div class="col-md-12 mt-3 text-right">
+												<button type="reset" href="#" class="btn btn-warning btn-md"> <i class="fa fa-arrow-left"></i> Restablecer</button>
+												<button type="submit"  href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
 
+						<!-- ROW-4 opened -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12">
+							<div class="card transcation-crypto" id="transcation-crypto">
+								<div class="card-header bd-b-0">
+									<h4 class="card-title font-weight-semibold mb-0">Listado de Comunas</h4>
+								</div>
+								<div class="card-body ">
+									<div class="">
+										<div class="table-responsive">
+											<table class="table text-nowrap" id="example1">
+												<thead class="border-top">
+													<tr>
+														<th class="border-bottom-0">ID</th>
+														<th class="bg-transparent">Comuna</th>
+														<th class="bg-transparent text-center">Accion</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$lista = $c->listarcomunas($id);
+													if (count($lista) > 0) {
+														foreach ($lista as $object) {
+															echo "<tr>";
+															echo "<td>" . $object->getId() . "</td>";
+															echo "<td>" . $object->getNombre() . "</td>";
+															echo "<td class='text-center'>
+																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")' data-original-title='Editar'><i class='fa fa-pen'></i></a>
+																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
+															</td>";
+															echo "</tr>";
+														}
+													}
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 					</div>
 				</div>
@@ -581,6 +675,25 @@
 			</div>
 			<!-- End Sidebar -->
 
+
+		<!-- Edit Modal -->
+		<div class="modal fade" id="modaledit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Editar Comuna</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		</div>
 		<!-- End Page -->
 
@@ -633,7 +746,9 @@
 
 		<!-- Custom js -->
 		<script src="assets/js/custom.js"></script>
-
-
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
 	</body>
 </html>

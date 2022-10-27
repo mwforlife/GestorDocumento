@@ -1,3 +1,7 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -472,61 +476,73 @@
                     <!-- Page Header -->
                     <div class="page-header">
                         <div class="page-header-1">
-                            <h1 class="main-content-title tx-30">Registrar Usuarios</h1>
+                            <h1 class="main-content-title tx-30">Usuarios</h1>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                             </ol>
                         </div>
                     </div>
                     <!-- End Page Header -->
+                    <div class="row mb-3">
+                        <div class="col-md-12 text-right">
+                        <a href="registrarusuario.php" class="btn btn-success">Registrar Usuario <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
                     <div class="card">
+                        <div class="card-header bd-b-0">
+                            <h4 class="card-title font-weight-semibold mb-0">Listado de Usuarios</h4>
+                        </div>
                         <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">RUT</label>
-                                    <input type="text" placeholder="11.111.111-1" class="form-control">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Nombres</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese el Nombre">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Apellidos</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese sus apellidos">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Correo Electronico</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese el Correo Electronico">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Dirección</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su Direccion">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Región</label>
-                                    <select name="" class="form-control" id=""></select>
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Comuna</label>
-                                    <select name="" id="" class="form-control"></select>
-                                </div>
-                                
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Telefono</label>
-                                    <input type="text" class="form-control" placeholder="Ingrese su numero de telefono">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Contraseña:</label>
-                                    <input type="password" placeholder="Ingrese su contraseña" class="form-control">
-                                </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <label for="">Confirmar Contraseña:</label>
-                                    <input type="password" placeholder="Repite la contraseña" class="form-control">
-                                </div>
-                                <div class="col-md-12 col-lg-12 text-right">
-                                    <a href="usuarios.html" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Volver</a>
-                                    <button type="reset" class="btn btn-warning"><i class="fa fa-refresh"></i> Restablecer</button>
-                                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Registrar</button>
+                            <div class="">
+                                <div class="table-responsive">
+                                    <table class="table text-nowrap" id="example1">
+                                        <thead class="border-top">
+                                            <tr>
+                                                <th class="bg-transparent">RUT</th>
+                                                <th class="bg-transparent">Nombre</th>
+                                                <th class="bg-transparent">Correo</th>
+                                                <th class="bg-transparent">Telefono</th>
+                                                <th class="bg-transparent">Permisos</th>
+                                                <th class="bg-transparent text-center">Accion</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                $lista = $c->listarusuarios();
+                                                if(count($lista)>0){
+                                                    foreach($lista as $u){
+                                                        echo "<tr class='border-bottom-0'>
+                                                        <td class='coin_icon d-flex fs-15 font-weight-semibold'>
+                                                            ".$u->getRut()."
+                                                        </td>
+                                                        <td class='text-muted fs-15 font-weight-semibold'>".$u->getNombre()." ".$u->getApellido()."</td>
+                                                        <td class='text-muted fs-15 font-weight-semibold'>".$u->getCorreo()."</td>
+                                                        <td class='text-muted fs-15 font-weight-semibold'>".$u->getTelefono()."</td>";
+                                                        $permi = $c->listarPermisosUsuario($u->getId());
+                                                        if(count($permi)>0){
+                                                            echo "<td class='text-muted fs-10 font-weight-semibold'>";
+                                                            foreach($permi as $p){
+                                                                echo $p->getNombre()."<br>";
+                                                            }
+                                                            echo "</td>";
+                                                        }else{
+                                                            echo "<td class='text-muted fs-15 font-weight-semibold'>Sin Permisos</td>";
+                                                        }
+                                                        echo "<td class='text-center'>
+                                                            <a class='btn btn-outline-info btn-sm rounded-11' data-toggle='tooltip' data-original-title='Ver Más'>
+                                                                <i class='fa fa-eye'>
+                                                                </i>
+                                                            </a>
+                                                            <a class='btn btn-outline-warning btn-sm rounded-11' data-toggle='tooltip' data-original-title='Editar'><i class='fa fa-pen'></i></a>
+                                                            <a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
+
+                                                        </td>
+                                                    </tr>";
+                                                    }
+                                                }
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

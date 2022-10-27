@@ -3,6 +3,7 @@ require '../controller.php';
 $c = new Controller();
 if(isset($_POST['RegionName'])){
     $RegionName = $_POST['RegionName'];
+    $RegionName = $c->escapeString($RegionName);
     $result = $c->registrarregiones($RegionName);
     if($result == true){
         echo 1;

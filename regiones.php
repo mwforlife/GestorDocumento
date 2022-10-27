@@ -495,9 +495,9 @@ $c = new Controller();
 									</div>
 									<form id="RegionForm" name="RegionForm" action="" class="needs-validation was-validated">
 										<div class="row">
-											<div class="col-lg-6">
+											<div class="col-lg-12">
 												<div class="form-group has-success mg-b-0">
-													<input id="" class="form-control" id="RegionName" name="RegionName" placeholder="Nombre Region" required="" type="text" value="">
+													<input id="RegionName" class="form-control" id="RegionName" name="RegionName" placeholder="Nombre Region" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-md-12 mt-3 text-right">
@@ -515,7 +515,7 @@ $c = new Controller();
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="card transcation-crypto" id="transcation-crypto">
 								<div class="card-header bd-b-0">
-									<h4 class="card-title font-weight-semibold mb-0">Listado AFP</h4>
+									<h4 class="card-title font-weight-semibold mb-0">Listado de Regiones</h4>
 								</div>
 								<div class="card-body ">
 									<div class="">
@@ -523,7 +523,7 @@ $c = new Controller();
 											<table class="table text-nowrap" id="example1">
 												<thead class="border-top">
 													<tr>
-														<th class="bg-transparent">AFP</th>
+														<th class="bg-transparent">Region</th>
 														<th class="bg-transparent text-center">Accion</th>
 													</tr>
 												</thead>
@@ -687,17 +687,15 @@ $c = new Controller();
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+						<h5 class="modal-title" id="staticBackdropLabel">Editar Region</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 					<div class="modal-body">
-						...
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						<button type="button" class="btn btn-primary">Understood</button>
+						<div class="content">
+
+						</div>
 					</div>
 				</div>
 			</div>

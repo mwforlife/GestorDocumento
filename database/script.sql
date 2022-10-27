@@ -132,6 +132,23 @@ create table users (
     updated_at timestamp not null default current_timestamp on update current_timestamp
 );
 
+create table permisos(
+    id int not null auto_increment primary key,
+    nombre varchar(50) not null,
+    descripcion varchar(200) not null
+);
+
+insert into permisos(nombre,descripcion) values('Lectura','Permite leer los datos');
+insert into permisos(nombre,descripcion) values('Escritura','Permite escribir los datos');
+insert into permisos(nombre,descripcion) values('Actualizacion','Permite actualizar los datos');
+insert into permisos(nombre,descripcion) values('Eliminacion','Permite eliminar los datos');
+
+create table permisosusuarios(
+    id int not null auto_increment primary key,
+    idusuario int not null references users(id_usu),
+    idpermiso int not null references permisos(id)
+);
+
 create table empresa(
     id int not null auto_increment primary key,
     rut varchar(20) not null,

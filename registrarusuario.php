@@ -1,3 +1,7 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +24,7 @@
 
     <!-- Icons css-->
     <link href="assets/css/icons.css" rel="stylesheet" />
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
     <!-- Style css-->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -472,61 +477,75 @@
                     <!-- Page Header -->
                     <div class="page-header">
                         <div class="page-header-1">
-                            <h1 class="main-content-title tx-30">Usuarios</h1>
+                            <h1 class="main-content-title tx-30">Registrar Usuarios</h1>
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
                             </ol>
                         </div>
                     </div>
                     <!-- End Page Header -->
-                    <div class="row mb-3">
-                        <div class="col-md-12 text-right">
-                        <a href="registrarusuario.html" class="btn btn-success">Registrar Usuario <i class="fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
                     <div class="card">
-                        <div class="card-header bd-b-0">
-                            <h4 class="card-title font-weight-semibold mb-0">Listado de Usuarios</h4>
-                        </div>
                         <div class="card-body">
-                            <div class="">
-                                <div class="table-responsive">
-                                    <table class="table text-nowrap" id="example1">
-                                        <thead class="border-top">
-                                            <tr>
-                                                <th class="bg-transparent">RUT</th>
-                                                <th class="bg-transparent">Nombre</th>
-                                                <th class="bg-transparent">Correo</th>
-                                                <th class="bg-transparent">Telefono</th>
-                                                <th class="bg-transparent text-center">Accion</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr class="border-bottom-0">
-                                                <td class="coin_icon d-flex fs-15 font-weight-semibold">
-                                                    11.111.111-1
-                                                </td>
-                                                <td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
+                            <form name="UserForm" id="UserForm">
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">RUT</label>
+                                        <input name="UserRut" autocapitalize="true" id="UserRut" type="text" onkeyup="formatRut(this)" placeholder="11.111.111-1" required class="form-control">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Nombres</label>
+                                        <input type="text" autocapitalize="true" name="UserNombre" id="UserNombre" class="form-control" required placeholder="Ingrese el Nombre">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Apellidos</label>
+                                        <input type="text" autocapitalize="true" class="form-control" name="UserApellido" id="UserApellido" required placeholder="Ingrese sus apellidos">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Correo Electronico</label>
+                                        <input type="email" autocapitalize="true" class="form-control" name="UserEmail" id="UserEmail" required placeholder="Ingrese el Correo Electronico">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Dirección</label>
+                                        <input type="text" autocapitalize="true" class="form-control" name="UserDireccion" id="UserDireccion" required placeholder="Ingrese su Direccion">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Región</label>
+                                        <select name="UserRegion" autocapitalize="true" id="UserRegion" onchange="listarcomunas()" required class="form-control regiones">
+                                            <?php
+                                                $lista = $c->listarregiones();
+                                                foreach ($lista as $object){
+                                                    echo "<option value='".$object->getId()."'>".$object->getNombre()."</option>";
+                                                }
 
-                                                <td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Comuna</label>
+                                        <select name="UserComuna" autocapitalize="true" required id="UserComuna" class="form-control comunas">
 
-                                                <td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
-
-                                                <td class="text-center">
-                                                    <a class="btn btn-outline-info btn-sm rounded-11" data-toggle="tooltip" data-original-title="Ver Más">
-                                                        <i class="fa fa-eye">
-                                                        </i>
-                                                    </a>
-
-                                                    <a class="btn btn-outline-warning btn-sm rounded-11" data-toggle="tooltip" data-original-title="Editar"><i class="fa fa-pen"></i></a>
-                                                    <a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Eliminar"><i class="fa fa-trash"></i></a>
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Telefono</label>
+                                        <input type="text" autocapitalize="true" class="form-control" required name="UserPhone" id="UserPhone" placeholder="Ingrese su numero de telefono">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Contraseña:</label>
+                                        <input type="password" autocomplete="false" required placeholder="Ingrese su contraseña" name="UserPassword" id="UserPassword" class="form-control">
+                                    </div>
+                                    <div class="col-md-6 col-lg-6">
+                                        <label for="">Confirmar Contraseña:</label>
+                                        <input type="password" autocomplete="false" required placeholder="Repite la contraseña" name="UserPassword1" id="UserPassword1" class="form-control">
+                                    </div>
+                                    <div class="col-md-12 col-lg-12 text-right">
+                                        <a href="usuarios.html" class="btn btn-danger"><i class="fa fa-arrow-left"></i> Volver</a>
+                                        <button type="reset" class="btn btn-warning"><i class="fa fa-refresh"></i> Restablecer</button>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Registrar</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -708,6 +727,13 @@
 
     <!-- Custom js -->
     <script src="assets/js/custom.js"></script>
+        <script src="JsFunctions/validation.js"></script>
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Usuarios.js"></script>
 
 
 </body>
