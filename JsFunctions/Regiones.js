@@ -9,11 +9,12 @@ $(document).ready(function(){
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
-                    alert("Registro exitoso");
-                    listarregiones();
-                    form[0].reset();
+                    ToastifySuccess("Registro insertado correctamente");
+                    setTimeout(function(){
+                        location.reload();
+                    }, 1500);
                 }else{
-                    alert("Error al registrar");
+                    ToastifyError("Error al Registrar")
                 }
             }
         });

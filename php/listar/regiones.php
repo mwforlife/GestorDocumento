@@ -4,7 +4,6 @@ $c = new Controller();
 
 $lista = $c->listarregiones();
 
-foreach($lista as $region){
-    echo $region->getId();
-    echo $region->getNombre();
+foreach ($lista as $region) {
+    echo "<option value='" . $region->getId() . "'>" . $region->getNombre() . "</option>";
 }
