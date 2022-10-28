@@ -573,7 +573,6 @@ class Controller{
     public function RegistrarEmpresa($rut, $razonsocial, $direccion, $region, $comuna, $ciudad, $telefono, $email, $giro, $cajascompensacion, $mutuales, $cotizacionbasica, $cotizacionleysanna, $cotizacionadicional){
         $this->conexion();
         $sql = "insert into empresa values(null, '$rut', '$razonsocial', '$direccion', $region, $comuna, $ciudad, '$telefono', '$email','$giro', $cajascompensacion, $mutuales, $cotizacionbasica, $cotizacionleysanna, $cotizacionadicional,now(), now());";
-        return $sql;
         $result = $this->mi->query($sql);
         $this->desconectar();
         return json_encode($result);
