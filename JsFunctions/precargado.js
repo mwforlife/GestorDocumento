@@ -22,5 +22,15 @@ function listarcomunas(){
     });
 }
 
-//Tipo Session
-$(document).ready()
+//listarCiudades
+function listarciudades(){
+    var region = $(".regiones").val();
+    $.ajax({
+        type: "POST",
+        url: "php/cargar/ciudades.php",
+        data: "id="+region,
+        success: function(data){
+            $(".ciudades").html(data);
+        }
+    });
+}

@@ -24,6 +24,7 @@ $c = new Controller();
 
     <!-- Icons css-->
     <link href="assets/css/icons.css" rel="stylesheet" />
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
     <!-- Style css-->
     <link href="assets/css/style.css" rel="stylesheet">
@@ -529,12 +530,17 @@ $c = new Controller();
                                                             echo "<td class='text-muted fs-15 font-weight-semibold'>Sin Permisos</td>";
                                                         }
                                                         echo "<td class='text-center'>
-                                                            <a class='btn btn-outline-info btn-sm rounded-11' data-toggle='tooltip' data-original-title='Ver Más'>
+                                                            <a class='btn btn-outline-info btn-sm rounded-11' onclick='more(".$u->getId().")' data-toggle='modal' data-target='#modaluser' data-original-title='Ver Más'>
                                                                 <i class='fa fa-eye'>
                                                                 </i>
                                                             </a>
-                                                            <a class='btn btn-outline-warning btn-sm rounded-11' data-toggle='tooltip' data-original-title='Editar'><i class='fa fa-pen'></i></a>
-                                                            <a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
+                                                            <a class='btn btn-outline-warning btn-sm rounded-11' href='permisos.php?code=".$u->getId()."' data-toggle='tooltip' data-original-title='Permisos'><i class='fa fa-user-plus'></i></a>
+                                                            <a class='btn btn-outline-warning btn-sm rounded-11' data-toggle='tooltip' href='EditarUsuario.php?code=".$u->getId()."' data-original-title='Editar'><i class='fa fa-pen'></i></a>
+                                                            <a title='Resetear Contraseña' class='btn btn-outline-info btn-sm rounded-11' onclick='cargarid(".$u->getId().")' data-toggle='modal' data-target='#modalcontra' data-original-title='Cambiar Contraseña'>
+                                                                <i class='fa fa-key'>
+                                                                </i>
+                                                            </a>
+                                                            <a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(".$u->getId().")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
 
                                                         </td>
                                                     </tr>";
@@ -571,108 +577,60 @@ $c = new Controller();
             </div>
             <div class="sidebar-body">
                 <h5>Todo</h5>
-                <div class="d-flex p-3">
-                    <label class="ckbox"><input checked type="checkbox"><span>Hangout With friends</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input checked type="checkbox"><span>System Updated</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input type="checkbox"><span>Do something more</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input type="checkbox"><span>System Updated</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top">
-                    <label class="ckbox"><input type="checkbox"><span>Find an Idea</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <div class="d-flex p-3 border-top mb-0">
-                    <label class="ckbox"><input type="checkbox"><span>Project review</span></label>
-                    <span class="ml-auto">
-                        <i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-                        <i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-                    </span>
-                </div>
-                <h5>Overview</h5>
-                <div class="p-4">
-                    <div class="main-traffic-detail-item">
-                        <div>
-                            <span>Founder &amp; CEO</span> <span>24</span>
-                        </div>
-                        <div class="progress">
-                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-xs wd-20p" role="progressbar"></div>
-                        </div><!-- progress -->
-                    </div>
-                    <div class="main-traffic-detail-item">
-                        <div>
-                            <span>UX Designer</span> <span>1</span>
-                        </div>
-                        <div class="progress">
-                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="15" class="progress-bar progress-bar-xs bg-secondary wd-15p" role="progressbar"></div>
-                        </div><!-- progress -->
-                    </div>
-                    <div class="main-traffic-detail-item">
-                        <div>
-                            <span>Recruitment</span> <span>87</span>
-                        </div>
-                        <div class="progress">
-                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" class="progress-bar progress-bar-xs bg-success wd-45p" role="progressbar"></div>
-                        </div><!-- progress -->
-                    </div>
-                    <div class="main-traffic-detail-item">
-                        <div>
-                            <span>Software Engineer</span> <span>32</span>
-                        </div>
-                        <div class="progress">
-                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-info wd-25p" role="progressbar"></div>
-                        </div><!-- progress -->
-                    </div>
-                    <div class="main-traffic-detail-item">
-                        <div>
-                            <span>Project Manager</span> <span>32</span>
-                        </div>
-                        <div class="progress">
-                            <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-danger wd-25p" role="progressbar"></div>
-                        </div><!-- progress -->
-                    </div>
-                </div>
+                
+                
             </div>
         </div>
         <!-- End Sidebar -->
+
+        <!-- Edit Modal -->
+		<div class="modal fade" id="modaluser" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Información Usuario</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="detalle">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!-- Edit Modal -->
+		<div class="modal fade" id="modalcontra" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Restablecer Comtraseña</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+						    <div class="col-md-6">
+                                <label>Contraseña Nueva</label>
+                                <input class="form-control" type="password" id="NewPass">
+                            </div>
+						    <div class="col-md-6">
+                                <label>Confirmar Contraseña</label>
+                                <input class="form-control" type="password" id="NewPass1">
+                            </div>
+                            <input type="hidden" id="idus"/>
+						    <div class="col-md-12 mt-2 text-right">
+                               <button class="btn btn-success" id="changepass"><i class="fa fa-save"></i> Guardar Cambios</button>
+                            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
     </div>
     <!-- End Page -->
@@ -726,6 +684,13 @@ $c = new Controller();
 
     <!-- Custom js -->
     <script src="assets/js/custom.js"></script>
+        <script src="JsFunctions/validation.js"></script>
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Usuarios.js"></script>
 
 
 </body>

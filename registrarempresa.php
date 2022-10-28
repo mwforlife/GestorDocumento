@@ -1,3 +1,8 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,6 +24,7 @@
 
 	<!-- Icons css-->
 	<link href="assets/css/icons.css" rel="stylesheet" />
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
 	<!-- Style css-->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -489,57 +495,66 @@
 										<h6 class="main-content-label mb-1">Registro de Empresa</h6>
 										<p class="text-mutted card-sub-title"></p>
 									</div>
-									<form action="" class="needs-validation was-validated">
+									<form name="EnterpriseForm" id="EnterpriseForm" class="needs-validation was-validated">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="RUT" required="" type="text" value="">
+													<input class="form-control" maxlength="12" id="EnterpriseRut"  name="EnterpriseRut" placeholder="RUT" onkeyup="formatRut(this)" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="Razón Social" required="" type="text" value="">
+													<input class="form-control" id="EnterpriseNombre"  name="EnterpriseNombre" placeholder="Razón Social" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="Direccion" required="" type="text" value="">
+													<input class="form-control" id="EnterpriseDireccion"  name="EnterpriseDireccion" placeholder="Direccion" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group select2-lg">
-													<select name="Region" class="form-control ">
-														<option value="">Seleccione una región</option>
+													<select name="EnterpriseRegion" id="EnterpriseRegion" onchange="listarcomunas(), listarciudades()" class="form-control regiones">
+														<?php
+														$lista = $c->listarregiones();
+														if(count($lista)>0){
+															foreach ($lista as $ciudad){
+																echo "<option value='".$ciudad->getId()."'>".$ciudad->getNombre()."</option>";
+															}
+														}else{
+															echo "<option value='0' >No hay regiones registradas</option>";
+														}
+														?>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group select2-lg">
-													<select name="Comuna" class="form-control ">
-														<option value="">Seleccione una Comuna</option>
+													<select name="EnterpriseComuna" id="EnterpriseComuna" class="form-control comunas">
+														
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group select2-lg">
-													<select name="Comuna" class="form-control ">
-														<option value="">Seleccione la Ciudad</option>
+													<select name="EnterpriseCiudad" id="EnterpriseCiudad" class="form-control ciudades">
+														
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="Telefono" required="" type="text" value="">
+													<input name="EnterpriseTelefono" id="EnterpriseTelefono" class="form-control" placeholder="Telefono" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="Correo Electronico" required="" type="text" value="">
+													<input name="EnterpriseCorreo" id="EnterpriseCorreo" class="form-control" placeholder="Correo Electronico" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success ">
-													<input class="form-control" placeholder="Giro Comercial" required="" type="text" value="">
+													<input name="EnterpriseGire" id="EnterpriseGiro" class="form-control" placeholder="Giro Comercial" required="" type="text" value="">
 												</div>
 											</div>
 										</div>
@@ -551,8 +566,17 @@
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group select2-lg">
-													<select name="CajaCompensacion" class="form-control ">
-														<option value="">Seleccione Caja de Compensación</option>
+													<select name="EnterpriseCaja" id="EnterpriseCaja" class="form-control ">
+														<?php
+															$lista = $c->listarCajasCompensacion();
+															if(count($lista)>0){
+																foreach ($lista as $caja){
+																	echo "<option value='".$caja->getId()."'>".$caja->getNombre()."</option>";
+																}
+															}else{
+																echo "<option value='0' >No hay cajas de compensacion registradas</option>";
+															}
+														?>
 													</select>
 												</div>
 											</div>
@@ -567,27 +591,37 @@
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group select2-lg">
-													<select name="CajaCompensacion" class="form-control ">
-														<option value="">Seleccionar Mutual</option>
+													<label>Mutuales de Seguridad</label>
+													<select name="EnterpriseMutual" id="EnterpriseMutual" class="form-control ">
+														<?php
+															$lista = $c->listarMutuales();
+															if(count($lista)>0){
+																foreach ($lista as $mutual){
+																	echo "<option value='".$mutual->getId()."'>".$mutual->getNombre()."</option>";
+																}
+															}else{
+																echo "<option value='0' >No hay mutuales registradas</option>";
+															}
+														?>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6">
 												<div class="form-group has-success ">
 												<label for="">Cotización basica (%)</label>
-													<input class="form-control" placeholder="0" readonly required="" type="number" value="0.9">
+													<input class="form-control" name="EnterpriseCotizacionB" id="EnterpriseCotizacionB" placeholder="0" readonly required="" type="number" value="0.9">
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6">
 												<div class="form-group has-success ">
 												<label for="">Cotización Ley Sanna (%)</label>
-													<input class="form-control" placeholder="0" readonly required="" type="number" value="0.03">
+													<input class="form-control" name="EnterpriseCotizacionL" id="EnterpriseCotizacionL" placeholder="0" readonly required="" type="number" value="0.03">
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-12">
 												<div class="form-group has-success ">
 												<label for="">Cotización Adicional (%)</label>
-													<input class="form-control" placeholder="Ingresar tasa"  required="" type="number" value="">
+													<input min="0" value="0" class="form-control" name="EnterpriseCotizacionC" id="EnterpriseCotizacionC" placeholder="Ingresar tasa"  required="" type="number" value="">
 												</div>
 											</div>
 											
@@ -957,6 +991,13 @@
 
 	<!-- Custom js -->
 	<script src="assets/js/custom.js"></script>
+        <script src="JsFunctions/validation.js"></script>
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Empresa.js"></script>
 
 
 </body></html>

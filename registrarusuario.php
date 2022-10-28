@@ -490,7 +490,7 @@ $c = new Controller();
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6">
                                         <label for="">RUT</label>
-                                        <input name="UserRut" autocapitalize="true" id="UserRut" type="text" onkeyup="formatRut(this)" placeholder="11.111.111-1" required class="form-control">
+                                        <input name="UserRut" maxlength="12" autocapitalize="true" id="UserRut" type="text" onkeyup="formatRut(this)" placeholder="11.111.111-1" required class="form-control">
                                     </div>
                                     <div class="col-md-6 col-lg-6">
                                         <label for="">Nombres</label>

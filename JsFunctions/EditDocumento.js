@@ -3,6 +3,7 @@ function agregarcampo(valor){
 }
 
 function generarDocumento(id){
+    $(".global-loader").show();
     //Capturar el contenido del editor
     var contenido = $("#summernote").summernote('code');
     console.log(contenido);
@@ -11,8 +12,10 @@ function generarDocumento(id){
         type: "POST",
         data: {contenido: contenido, id: id},
         success: function(data){
+            $(".global-loader").hide();
             
         }
     });
+    $(".global-loader").hide();
 
 }

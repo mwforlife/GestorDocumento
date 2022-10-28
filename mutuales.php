@@ -1,23 +1,9 @@
 <?php
 require 'php/controller.php';
 $c = new Controller();
-$nombre ="";
-$id=0;
-if (isset($_GET['code'])) {
-    $id = $_GET['code'];
-    $region = $c->buscarregion($id);
-    if ($region != null) {
-        $nombre = $region->getNombre();
-        $id = $region->getId();
-    } else {
-        header("Location: regiones.php");
-    }
-}else{
-	header("Location: regiones.php");
-}
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 	<head>
 
 		<meta charset="utf-8">
@@ -77,7 +63,7 @@ if (isset($_GET['code'])) {
 			<!-- Sidemenu -->
 			<div class="main-sidebar main-sidebar-sticky side-menu">
 				<div class="sidemenu-logo">
-					<a class="main-logo" href="index.html">
+					<a class="main-logo" href="index.php">
 						<img src="assets/img/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
 						<img src="assets/img/brand/icon.png" class="header-brand-img icon-logo" alt="logo">
 						<img src="assets/img/brand/dark-logo.png" class="header-brand-img desktop-logo theme-logo" alt="logo">
@@ -91,64 +77,64 @@ if (isset($_GET['code'])) {
 							<a class="nav-link with-sub" href="#"><i class="fe fe-home sidemenu-icon"></i><span class="sidemenu-label">Definicion de Datos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="isapres.html">ISAPRES</a>
+									<a class="nav-sub-link" href="isapres.php">ISAPRES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="afp.html">AFP</a>
+									<a class="nav-sub-link" href="afp.php">AFP</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="regiones.html">REGIONES</a>
+									<a class="nav-sub-link" href="regiones.php">REGIONES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="comunas.html">COMUNAS</a>
+									<a class="nav-sub-link" href="comunas.php">COMUNAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="ciudades.html">CIUDADES</a>
+									<a class="nav-sub-link" href="ciudades.php">CIUDADES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="jornadas.html">JORNADAS</a>
+									<a class="nav-sub-link" href="jornadas.php">JORNADAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tiposueldo.html">TIPO SUELDO BASE</a>
+									<a class="nav-sub-link" href="tiposueldo.php">TIPO SUELDO BASE</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cargos.html">CARGOS</a>
+									<a class="nav-sub-link" href="cargos.php">CARGOS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cajacompensacion.html">CAJAS DE COMPENSACIÓN</a>
+									<a class="nav-sub-link" href="cajacompensacion.php">CAJAS DE COMPENSACIÓN</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="mutuales.html">MUTUALES DE SEGURIDAD</a>
+									<a class="nav-sub-link" href="mutuales.php">MUTUALES DE SEGURIDAD</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="asignacionfamiliar.html">TRAMOS ASIGNACION FAMILIAR</a>
+									<a class="nav-sub-link" href="asignacionfamiliar.php">TRAMOS ASIGNACION FAMILIAR</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tipocontrato.html">TIPO CONTRATO LABORAL</a>
+									<a class="nav-sub-link" href="tipocontrato.php">TIPO CONTRATO LABORAL</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="causaltermino.html">CAUSAL TERMINO CONTRATO</a>
+									<a class="nav-sub-link" href="causaltermino.php">CAUSAL TERMINO CONTRATO</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-header"><span class="nav-label">FUNCIONES</span></li>
 						<li class="nav-item">
-							<a class="nav-link" href="tipodocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
+							<a class="nav-link" href="tipodocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="redactardocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
+							<a class="nav-link" href="redactardocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="asociardocumentos.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
+							<a class="nav-link" href="asociardocumentos.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link with-sub" href="#"><i class="fe fe-message-square sidemenu-icon"></i><span class="sidemenu-label">Empresas</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="empresas.html">Registro de Empresas</a>
+									<a class="nav-sub-link" href="empresas.php">Registro de Empresas</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="centrocosto.html">Registro de Centro de Costo</a>
+									<a class="nav-sub-link" href="centrocosto.php">Registro de Centro de Costo</a>
 								</li>
 							</ul>
 						</li>
@@ -156,10 +142,10 @@ if (isset($_GET['code'])) {
 							<a class="nav-link with-sub" href="#"><i class="fe fe-droplet sidemenu-icon"></i><span class="sidemenu-label">Auditoria</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriatrabajadores.html">Auditoria de trabajadores</a>
+									<a class="nav-sub-link" href="auditoriatrabajadores.php">Auditoria de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriaeventos.html">Auditoria de eventos</a>
+									<a class="nav-sub-link" href="auditoriaeventos.php">Auditoria de eventos</a>
 								</li>
 								
 							</ul>
@@ -168,16 +154,16 @@ if (isset($_GET['code'])) {
 							<a class="nav-link with-sub" href="#"><i class="fe fe-map-pin sidemenu-icon"></i><span class="sidemenu-label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="trabajadores.html">Registro de trabajadores</a>
+									<a class="nav-sub-link" href="trabajadores.php">Registro de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentoficha.html">Registro de documento a Ficha trabajador</a>
+									<a class="nav-sub-link" href="documentoficha.php">Registro de documento a Ficha trabajador</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="anotaciones.html">Registro de Anotaciones</a>
+									<a class="nav-sub-link" href="anotaciones.php">Registro de Anotaciones</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="historialtrabajador.html">Historial de trabajadores</a>
+									<a class="nav-sub-link" href="historialtrabajador.php">Historial de trabajadores</a>
 								</li>
 							</ul>
 						</li>
@@ -185,16 +171,16 @@ if (isset($_GET['code'])) {
 							<a class="nav-link with-sub" href="#"><i class="fe fe-layout sidemenu-icon"></i><span class="sidemenu-label">Documentos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentosmasivos.html">Generacion de Documentos Masivos</a>
+									<a class="nav-sub-link" href="documentosmasivos.php">Generacion de Documentos Masivos</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentospersonalizados.html">Generacion de Documentos Personalizados</a>
+									<a class="nav-sub-link" href="documentospersonalizados.php">Generacion de Documentos Personalizados</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="contratoindividual.html">Generacion de Contrato Individual</a>
+									<a class="nav-sub-link" href="contratoindividual.php">Generacion de Contrato Individual</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="finiquitoindividual.html">Generacion de Finiquitos Individual</a>
+									<a class="nav-sub-link" href="finiquitoindividual.php">Generacion de Finiquitos Individual</a>
 								</li>
 							</ul>
 						</li>
@@ -202,7 +188,7 @@ if (isset($_GET['code'])) {
 							<a class="nav-link with-sub" href="#"><i class="fe fe-box sidemenu-icon"></i><span class="sidemenu-label">Gestion de Usuarios</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="usuarios.html">Registrar Usuarios</a>
+									<a class="nav-sub-link" href="usuarios.php">Registrar Usuarios</a>
 								</li>
 								
 							</ul>
@@ -220,8 +206,8 @@ if (isset($_GET['code'])) {
 					</div>
 					<div class="main-header-center">
 						<div class="responsive-logo">
-							<a href="index.html"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
-							<a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
+							<a href="index.php"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
+							<a href="index.php"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
 						</div>
 						<div class="input-group">
 							<div class="mt-0">
@@ -312,13 +298,13 @@ if (isset($_GET['code'])) {
 									<h6 class="main-notification-title">Alexandra Churchill</h6>
 									<p class="main-notification-text">Web Designer</p>
 								</div>
-								<a class="dropdown-item border-top" href="profile.html">
+								<a class="dropdown-item border-top" href="profile.php">
 									<i class="fe fe-user"></i> Mi Perfil
 								</a>
-								<a class="dropdown-item" href="lockscreen.html">
+								<a class="dropdown-item" href="lockscreen.php">
 									<i class="fe fe fe-unlock"></i> Lock screen
 								</a>
-								<a class="dropdown-item" href="signin.html">
+								<a class="dropdown-item" href="signin.php">
 									<i class="fe fe-power"></i> Cerrar Sesíon
 								</a>
 							</div>
@@ -427,19 +413,19 @@ if (isset($_GET['code'])) {
 										<h6 class="main-notification-title">Alexandra Churchill</h6>
 										<p class="main-notification-text">Web Designer</p>
 									</div>
-									<a class="dropdown-item border-top" href="profile.html">
+									<a class="dropdown-item border-top" href="profile.php">
 										<i class="fe fe-user"></i> My Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-edit"></i> Edit Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-settings"></i> Account Settings
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe fe-unlock"></i> Lock screen
 									</a>
-									<a class="dropdown-item" href="signin.html">
+									<a class="dropdown-item" href="signin.php">
 										<i class="fe fe-power"></i> Sign Out
 									</a>
 								</div>
@@ -460,59 +446,34 @@ if (isset($_GET['code'])) {
 
 				<div class="container-fluid">
 					<div class="inner-body">
+
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Comunas</h1>
+								<h1 class="main-content-title tx-30">Mutuales de Seguridad</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<h6 class="main-content-label mb-1">Region: <?php echo $nombre?></h6>
-								</div>
-							</div>
 						</div>
 						<!-- End Page Header -->
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="card orverflow-hidden">
-								<div class="card-body">
-									<div>
-										<h6 class="main-content-label mb-1">Registro de Comunas</h6>
-										<p class="text-mutted card-sub-title"></p>
-									</div>
-									<form id="ComunaForm" name="ComunaForm" action="" class="needs-validation was-validated">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group has-success mg-b-0">
-													<input  class="form-control" id="ComunaID" name="ComunaID" placeholder="ID Comuna" required="" type="text" value="">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group has-success mg-b-0">
-													<input  class="form-control" id="ComunaName" name="ComunaName" placeholder="Nombre Comuna" required="" type="text" value="">
-												</div>
-											</div>
-											<input type="hidden" value="<?php echo $id; ?>" name="RegionId">
-											<div class="col-md-12 mt-3 text-right">
-												<button type="reset" href="#" class="btn btn-warning btn-md"> <i class="fa fa-arrow-left"></i> Restablecer</button>
-												<button type="submit"  href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
-											</div>
-										</div>
-									</form>
-								</div>
+						
+						<div class="row">
+							<div class="col-md-12">
+								<label>Nombre</label>
+								<input class="form-control" id="Nombre" placeholder="Nombre Mutuales de Seguridad"/>
+							</div>
+							<div class="col-md-12 mt-3 text-right">
+								<button id="regismut" class="btn btn-success">Registrar</button>
 							</div>
 						</div>
-					</div>
 
 						<!-- ROW-4 opened -->
-					<div class="row">
+					<div class="row mt-5">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="card transcation-crypto" id="transcation-crypto">
 								<div class="card-header bd-b-0">
-									<h4 class="card-title font-weight-semibold mb-0">Listado de Comunas</h4>
+									<h4 class="card-title font-weight-semibold mb-0">Listado de Cajas de Compensación</h4>
 								</div>
 								<div class="card-body ">
 									<div class="">
@@ -520,26 +481,25 @@ if (isset($_GET['code'])) {
 											<table class="table text-nowrap" id="example1">
 												<thead class="border-top">
 													<tr>
-														<th class="border-bottom-0">ID</th>
-														<th class="bg-transparent">Comuna</th>
+														<th class="bg-transparent">Mutual de Seguridad</th>
 														<th class="bg-transparent text-center">Accion</th>
 													</tr>
 												</thead>
 												<tbody>
 													<?php
-													$lista = $c->listarcomunas($id);
+													$lista = $c->listarMutuales();
 													if (count($lista) > 0) {
 														foreach ($lista as $object) {
 															echo "<tr>";
-															echo "<td>" . $object->getId() . "</td>";
 															echo "<td>" . $object->getNombre() . "</td>";
 															echo "<td class='text-center'>
-																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")' data-original-title='Editar'><i class='fa fa-pen'></i></a>
 																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
 															</td>";
 															echo "</tr>";
 														}
 													}
+
+
 													?>
 												</tbody>
 											</table>
@@ -549,6 +509,7 @@ if (isset($_GET['code'])) {
 							</div>
 						</div>
 					</div>
+					<!-- ROW-4 END -->
 
 					</div>
 				</div>
@@ -677,25 +638,6 @@ if (isset($_GET['code'])) {
 			</div>
 			<!-- End Sidebar -->
 
-
-		<!-- Edit Modal -->
-		<div class="modal fade" id="modaledit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Editar Comuna</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="content">
-
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		</div>
 		<!-- End Page -->
 
@@ -740,17 +682,21 @@ if (isset($_GET['code'])) {
 		<!-- Sidebar js -->
 		<script src="assets/plugins/sidebar/sidebar.js"></script>
 
-		<!-- INTERNAL INDEX js -->
-		<script src="assets/js/index.js"></script>
 
 		<!-- Sticky js -->
 		<script src="assets/js/sticky.js"></script>
 
 		<!-- Custom js -->
 		<script src="assets/js/custom.js"></script>
+        <script src="JsFunctions/validation.js"></script>
 		<script src="JsFunctions/Alert/toastify.js"></script>
 		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
 		<script src="JsFunctions/Alert/alert.js"></script>
 		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Mutuales.js"></script>
+
+
+
 	</body>
 </html>

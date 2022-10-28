@@ -1,3 +1,7 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -19,6 +23,7 @@
 
 		<!-- Icons css-->
 		<link href="assets/css/icons.css" rel="stylesheet"/>
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
 		<!-- Style css-->
 		<link href="assets/css/style.css" rel="stylesheet">
@@ -445,7 +450,7 @@
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Bitcoin</h1>
+								<h1 class="main-content-title tx-30">Caja Compensacion</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
@@ -453,6 +458,58 @@
 						</div>
 						<!-- End Page Header -->
 
+						<div class="row">
+							<div class="col-md-12">
+								<label>Nombre</label>
+								<input class="form-control" id="Nombre" placeholder="Nombre Caja Compensacion"/>
+							</div>
+							<div class="col-md-12 mt-3 text-right">
+								<button id="regiscomp" class="btn btn-success">Registrar</button>
+							</div>
+						</div>
+
+						<!-- ROW-4 opened -->
+					<div class="row mt-5">
+						<div class="col-xl-12 col-lg-12 col-md-12">
+							<div class="card transcation-crypto" id="transcation-crypto">
+								<div class="card-header bd-b-0">
+									<h4 class="card-title font-weight-semibold mb-0">Listado de Cajas de Compensación</h4>
+								</div>
+								<div class="card-body ">
+									<div class="">
+										<div class="table-responsive">
+											<table class="table text-nowrap" id="example1">
+												<thead class="border-top">
+													<tr>
+														<th class="bg-transparent">Caja Compensación</th>
+														<th class="bg-transparent text-center">Accion</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$lista = $c->listarCajasCompensacion();
+													if (count($lista) > 0) {
+														foreach ($lista as $object) {
+															echo "<tr>";
+															echo "<td>" . $object->getNombre() . "</td>";
+															echo "<td class='text-center'>
+																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
+															</td>";
+															echo "</tr>";
+														}
+													}
+
+
+													?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- ROW-4 END -->
 
 					</div>
 				</div>
@@ -626,13 +683,19 @@
 		<script src="assets/plugins/sidebar/sidebar.js"></script>
 
 		<!-- INTERNAL INDEX js -->
-		<script src="assets/js/index.js"></script>
 
 		<!-- Sticky js -->
 		<script src="assets/js/sticky.js"></script>
 
 		<!-- Custom js -->
 		<script src="assets/js/custom.js"></script>
+        <script src="JsFunctions/validation.js"></script>
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Cajacompensacion.js"></script>
 
 
 	</body>

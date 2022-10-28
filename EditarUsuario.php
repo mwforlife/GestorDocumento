@@ -1,5 +1,23 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+$nombre ="";
+$id=0;
+if (isset($_GET['code'])) {
+    $id = $_GET['code'];
+    $usuario = $c->getuser($id);
+    if ($usuario != null) {
+        $nombre = $usuario->getNombre()." ".$usuario->getApellido();
+        $id = $usuario->getId();
+    } else {
+        header("Location: usuarios.php");
+    }
+}else{
+	header("Location: usuarios.php");
+}
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 
 		<meta charset="utf-8">
@@ -19,6 +37,7 @@
 
 		<!-- Icons css-->
 		<link href="assets/css/icons.css" rel="stylesheet"/>
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
 		<!-- Style css-->
 		<link href="assets/css/style.css" rel="stylesheet">
@@ -441,19 +460,87 @@
 
 				<div class="container-fluid">
 					<div class="inner-body">
-
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Bitcoin</h1>
+								<h1 class="main-content-title tx-30">Editar Usuario</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<h6 class="main-content-label mb-1">Usuario: <?php echo $nombre?></h6>
+								</div>
+							</div>
 						</div>
 						<!-- End Page Header -->
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="card orverflow-hidden">
+										<div class="card-body">
+											<form id="UserEditForm" name="UserEditForm" action="" class="needs-validation was-validated">
+												<div class="row">
+													<div class="col-md-6 col-lg-6">
+														<label for="">RUT</label>
+														<input name="UserRut" value='<?php echo $usuario->getRut();?>' autocapitalize="true" id="UserRut" type="text" onkeyup="formatRut(this)" placeholder="11.111.111-1" required class="form-control">
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Nombres</label>
+														<input type="text" value='<?php echo $usuario->getNombre();?>' autocapitalize="true" name="UserNombre" id="UserNombre" class="form-control" required placeholder="Ingrese el Nombre">
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Apellidos</label>
+														<input type="text" value='<?php echo $usuario->getApellido();?>' autocapitalize="true" class="form-control" name="UserApellido" id="UserApellido" required placeholder="Ingrese sus apellidos">
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Correo Electronico</label>
+														<input type="email" value="<?php echo $usuario->getCorreo();?>" autocapitalize="true" class="form-control" name="UserEmail" id="UserEmail" required placeholder="Ingrese el Correo Electronico">
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Dirección</label>
+														<input type="text" value="<?php echo $usuario->getDireccion();?>" autocapitalize="true" class="form-control" name="UserDireccion" id="UserDireccion" required placeholder="Ingrese su Direccion">
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Región</label>
+														<select name="UserRegion" autocapitalize="true" id="UserRegion" onchange="listarcomunas()" required class="form-control regiones">
+															<?php
+																$lista = $c->listarregiones();
+																foreach ($lista as $object){
+																	if($object->getId() == $usuario->getRegion()){
+																		echo "<option value='".$object->getId()."' selected>".$object->getNombre()."</option>";
+																	}else{
+																		echo "<option value='".$object->getId()."'>".$object->getNombre()."</option>";
+																	}
+																}
 
+															?>
+														</select>
+													</div>
+													<div class="col-md-6 col-lg-6">
+														<label for="">Comuna</label>
+														<select name="UserComuna" autocapitalize="true" required id="UserComuna" class="form-control comunas">
 
+														</select>
+													</div>
+													
+													<div class="col-md-6 col-lg-6">
+														<label for="">Telefono</label>
+														<input type="text" value='<?php echo $usuario->getTelefono();?>' autocapitalize="true" class="form-control" required name="UserPhone" id="UserPhone" placeholder="Ingrese su numero de telefono">
+													</div>
+													
+													<input type="hidden" value="<?php echo $id; ?>" name="UserId">
+													<div class="col-md-12 mt-3 text-right">
+														<a type="reset" href="usuarios.php" class="btn btn-warning btn-md"> <i class="fa fa-arrow-left"></i> Volver</a>
+														<button type="submit"  href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Guardar Cambios</button>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						<!-- End PAge Content -->
 					</div>
 				</div>
 			</div>
@@ -581,6 +668,25 @@
 			</div>
 			<!-- End Sidebar -->
 
+
+		<!-- Edit Modal -->
+		<div class="modal fade" id="modaledit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Editar Comuna</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		</div>
 		<!-- End Page -->
 
@@ -633,7 +739,12 @@
 
 		<!-- Custom js -->
 		<script src="assets/js/custom.js"></script>
-
-
+        <script src="JsFunctions/validation.js"></script>
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Usuarios.js"></script>
 	</body>
 </html>

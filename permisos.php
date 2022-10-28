@@ -5,15 +5,15 @@ $nombre ="";
 $id=0;
 if (isset($_GET['code'])) {
     $id = $_GET['code'];
-    $region = $c->buscarregion($id);
-    if ($region != null) {
-        $nombre = $region->getNombre();
-        $id = $region->getId();
+    $usuario = $c->getuser($id);
+    if ($usuario != null) {
+        $nombre = $usuario->getNombre() . " " . $usuario->getApellido();
+        $id = $usuario->getId();
     } else {
-        header("Location: regiones.php");
+        header("Location: usuarios.php");
     }
 }else{
-	header("Location: regiones.php");
+    header("Location: usuarios.php");
 }
 ?>
 <!DOCTYPE html>
@@ -463,93 +463,122 @@ if (isset($_GET['code'])) {
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Comunas</h1>
+								<h1 class="main-content-title tx-30">Permisos</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
 							<div class="row">
 								<div class="col-md-12">
-									<h6 class="main-content-label mb-1">Region: <?php echo $nombre?></h6>
+									<h6 class="main-content-label mb-1">Usuario: <?php echo $nombre?></h6>
 								</div>
 							</div>
 						</div>
 						<!-- End Page Header -->
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="card orverflow-hidden">
-								<div class="card-body">
-									<div>
-										<h6 class="main-content-label mb-1">Registro de Comunas</h6>
-										<p class="text-mutted card-sub-title"></p>
-									</div>
-									<form id="ComunaForm" name="ComunaForm" action="" class="needs-validation was-validated">
-										<div class="row">
-											<div class="col-lg-6">
-												<div class="form-group has-success mg-b-0">
-													<input  class="form-control" id="ComunaID" name="ComunaID" placeholder="ID Comuna" required="" type="text" value="">
-												</div>
-											</div>
-											<div class="col-lg-6">
-												<div class="form-group has-success mg-b-0">
-													<input  class="form-control" id="ComunaName" name="ComunaName" placeholder="Nombre Comuna" required="" type="text" value="">
-												</div>
-											</div>
-											<input type="hidden" value="<?php echo $id; ?>" name="RegionId">
-											<div class="col-md-12 mt-3 text-right">
-												<button type="reset" href="#" class="btn btn-warning btn-md"> <i class="fa fa-arrow-left"></i> Restablecer</button>
-												<button type="submit"  href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card orverflow-hidden">
+                                    <div class="card-body">
+                                        <div>
+                                            <h6 class="main-content-label mb-1">Asignación de Permisos</h6>
+                                            <p class="text-mutted card-sub-title"></p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered text-nowrap mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="wd-15p border-bottom-0">Roles</th>
+                                                                <th class="wd-15p border-bottom-0">Descripción</th>
+                                                                <th class="wd-15p border-bottom-0">Asignar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Todo</td>
+                                                                <td>Acceso a todo el sistema</td>
+                                                                <td><button class="btn btn-success btn-sm" onclick="asignar(0,<?php echo $id;?>)"><i class="fa fa-check"></i></button></td>
+
+                                                            </tr>
+                                                            <?php
+                                                                $lista = $c->listarPermisos();
+                                                                if(count($lista)>0){
+                                                                    foreach($lista as $l){
+                                                                        echo "<tr>
+                                                                                <td>".$l->getNombre()."</td>
+                                                                                <td>".$l->getDescripcion()."</td>
+                                                                                <td>
+                                                                                <button class='btn btn-success btn-sm' onclick='asignar(".$l->getId().",".$id.")'><i class='fa fa-check'></i></button>
+                                                                                </td>
+                                                                            </tr>";
+                                                                    }
+                                                                }else{
+                                                                    echo "<tr><td colspan='3'>No hay Permisos Asignados</td></tr>";
+                                                                }
+
+                                                                
+                                                            
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-right mt-2">
+                                                <a href="usuarios.php" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left">Volver</i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
 						<!-- ROW-4 opened -->
-					<div class="row">
-						<div class="col-xl-12 col-lg-12 col-md-12">
-							<div class="card transcation-crypto" id="transcation-crypto">
-								<div class="card-header bd-b-0">
-									<h4 class="card-title font-weight-semibold mb-0">Listado de Comunas</h4>
-								</div>
-								<div class="card-body ">
-									<div class="">
-										<div class="table-responsive">
-											<table class="table text-nowrap" id="example1">
-												<thead class="border-top">
-													<tr>
-														<th class="border-bottom-0">ID</th>
-														<th class="bg-transparent">Comuna</th>
-														<th class="bg-transparent text-center">Accion</th>
-													</tr>
-												</thead>
-												<tbody>
-													<?php
-													$lista = $c->listarcomunas($id);
-													if (count($lista) > 0) {
-														foreach ($lista as $object) {
-															echo "<tr>";
-															echo "<td>" . $object->getId() . "</td>";
-															echo "<td>" . $object->getNombre() . "</td>";
-															echo "<td class='text-center'>
-																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")' data-original-title='Editar'><i class='fa fa-pen'></i></a>
-																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
-															</td>";
-															echo "</tr>";
-														}
-													}
-													?>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card orverflow-hidden">
+                                    <div class="card-body">
+                                        <div>
+                                            <h6 class="main-content-label mb-1">Permisos Asignados</h6>
+                                            <p class="text-mutted card-sub-title"></p>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered text-nowrap mb-0">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="wd-15p border-bottom-0">Roles</th>
+                                                                <th class="wd-15p border-bottom-0">Eliminar</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                                $lista = $c->listarPermisosUsuario($id);
+                                                                foreach($lista as $l){
+                                                                    echo "<tr>
+                                                                            <td>".$l->getNombre()."</td>
+                                                                            <td>
+                                                                            <button class='btn btn-danger btn-sm' onclick='revocar(".$l->getId().",0)'><i class='fa fa-trash'></i></button>
+                                                                            </td>
+                                                                        </tr>";
+                                                                }
 
+                                                                if(count($lista)>0){
+                                                                    echo "<tr><td colspan='2' class='text-center'><button class='btn btn-danger btn-sm' onclick='revocar(0,".$id.")'><i class='fa fa-trash'></i> Eliminar todos los Permisos</button></td></tr>";
+                                                                }
+                                                            
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 					</div>
 				</div>
 			</div>
@@ -752,5 +781,7 @@ if (isset($_GET['code'])) {
 		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
 		<script src="JsFunctions/Alert/alert.js"></script>
 		<script src="JsFunctions/Comunas.js"></script>
+        <script src="JsFunctions/precargado.js"></script>
+        <script src="JsFunctions/Usuarios.js"></script>
 	</body>
 </html>

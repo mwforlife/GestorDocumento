@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $("#RegionForm").on("submit", function(e){
         e.preventDefault();
+        $(".global-loader").show();
         var form = $(this);
         var data = form.serialize();
         $.ajax({
@@ -9,11 +10,13 @@ $(document).ready(function(){
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
+                    $(".global-loader").hide();
                     ToastifySuccess("Registro insertado correctamente");
                     setTimeout(function(){
                         location.reload();
                     }, 1500);
                 }else{
+                    $(".global-loader").hide();
                     ToastifyError("Error al Registrar")
                 }
             }
@@ -23,17 +26,20 @@ $(document).ready(function(){
 });
 
 function Editar(id){
+    $(".global-loader").show();
     $.ajax({
         type: "POST",
         url: "php/cargaredit/regiones.php",
         data: {id: id},
         success: function(data){
+            $(".global-loader").hide();
             $(".content").html(data);            
         }
     });
 }
 
 function actualizarregion(id){
+    $(".global-loader").hide();
     var nombre = $("#nombre").val();
 
     $.ajax({
@@ -42,11 +48,13 @@ function actualizarregion(id){
         data: {id: id, nombre: nombre},
         success: function(data){
             if(data == 1 || data == "1"){
+                $(".global-loader").hide();
                 ToastifySuccess("Registro actualizado correctamente");
                 setTimeout(function(){
                     location.reload();
                 }, 1500);
             }else{
+                $(".global-loader").hide();
                 ToastifyError("Error al actualizar")
             }
         }
@@ -54,6 +62,7 @@ function actualizarregion(id){
 }
 
 function Eliminar(id){
+    $(".global-loader").show();
     swal.fire({
         title: "¿Estas seguro?",
         text: "Una vez eliminado no se podra recuperar",
@@ -70,17 +79,20 @@ function Eliminar(id){
                 url: "php/eliminar/regiones.php",
                 data: {id: id},
                 success: function(data){
+                    $(".global-loader").hide();
                     if(data == 1 || data == "1"){
                         ToastifySuccess("Registro eliminado correctamente");
                         setTimeout(function(){
                             location.reload();
                         }, 1500);
                     }else{
+                        $(".global-loader").hide();
                         ToastifyError("Error al eliminar")
                     }
                 }
             });
         }else{
+            $(".global-loader").hide();
             ToastifyInfo("Operacion cancelada");
         }
     });

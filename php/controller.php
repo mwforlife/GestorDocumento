@@ -4,13 +4,23 @@ require 'Class/Comunas.php';
 require 'Class/Ciudades.php';
 require 'Class/Users.php';
 require 'Class/Permisos.php';
-class Controller{
+require 'Class/Cajacompensacion.php';
+require 'Class/Mutuales.php';
+require 'Class/Empresa.php';
 
-    //Variables
+class Controller{
     private $host = "localhost";
+
+    /*Variables*/
     private $user = "root";
     private $pass = "";
     private $bd = "gestordocumentos";
+
+    
+    /*Variables BD Remota
+    private $user = 'kaiserte_admin';
+    private $pass = 'Kaiser2022$';
+    private $bd = 'kaiserte_gd';*/
     private $mi;
     
     //Conexion
@@ -225,11 +235,24 @@ class Controller{
             return false;
         }
     }
+    //validar usuario
+    public function validarusuario1($correo, $rut, $id){
+        $this->conexion();
+        $sql = "select * from users where (email = '$correo' or rut = '$rut') and id_usu != $id";
+        $result = $this->mi->query($sql);
+        if($rs = mysqli_fetch_array($result)){
+            $this->desconectar();
+            return json_encode(true);
+        }else{
+            $this->desconectar();
+            return json_encode(false);
+        }
+    }
 
     //Login
     public function login($user, $pass){
         $this->conexion();
-        $sql = "select * from users where rut = '$user' or correo = '$user' and pass = sha1('$pass')";
+        $sql = "select * from users where rut = '$user' or correo = '$user' and password = sha1('$pass')";
         $result = $this->mi->query($sql);
         if ($rs = mysqli_fetch_array($result)) {
             $id = $rs['id'];
@@ -241,7 +264,7 @@ class Controller{
             $region = $rs['region'];
             $comuna = $rs['comuna'];
             $telefono = $rs['telefono'];
-            $pass = $rs['pass'];
+            $pass = $rs['password'];
             $estado = $rs['estado'];
             $token = $rs['token'];
             $registro = $rs['registro'];
@@ -257,10 +280,10 @@ class Controller{
     //Buscar Usuario
     public function getuser($id){
         $this->conexion();
-        $sql = "select * from users where id = $id";
+        $sql = "select * from users where id_usu = $id";
         $result = $this->mi->query($sql);
         if ($rs = mysqli_fetch_array($result)) {
-            $id = $rs['id'];
+            $id = $rs['id_usu'];
             $rut = $rs['rut'];
             $nombre = $rs['nombre'];
             $apellidos = $rs['apellidos'];
@@ -269,7 +292,7 @@ class Controller{
             $region = $rs['region'];
             $comuna = $rs['comuna'];
             $telefono = $rs['telefono'];
-            $pass = $rs['pass'];
+            $pass = $rs['password'];
             $estado = $rs['estado'];
             $token = $rs['token'];
             $registro = $rs['created_at'];
@@ -282,13 +305,41 @@ class Controller{
         return null;
     }
 
-    //listar usuarios
+    //Buscar Usuario texto
+    public function getuser1($id){
+    $this->conexion();
+    $sql = "select id_usu,rut, users.nombre as nombre, apellidos, email, direccion, regiones.nombre as region, comunas.nombre as comuna, telefono, password, status.nombre as estado, token, created_at, updated_at from users, regiones, comunas, status where regiones.id = users.region and comunas.id = users.comuna and status.id = users.estado and users.id_usu = $id";
+    $result = $this->mi->query($sql);
+    if ($rs = mysqli_fetch_array($result)) {
+        $id = $rs['id_usu'];
+        $rut = $rs['rut'];
+        $nombre = $rs['nombre'];
+        $apellidos = $rs['apellidos'];
+        $email = $rs['email'];
+        $direccion = $rs['direccion'];
+        $region = $rs['region'];
+        $comuna = $rs['comuna'];
+        $telefono = $rs['telefono'];
+        $pass = $rs['password'];
+        $estado = $rs['estado'];
+        $token = $rs['token'];
+        $registro = $rs['created_at'];
+        $update = $rs['updated_at'];
+        $user = new Users($id, $rut, $nombre, $apellidos, $email, $direccion, $region, $comuna, $telefono, $pass, $estado, $token, $registro, $update);
+        $this->desconectar();
+        return $user;
+    }
+    $this->desconectar();
+    return null;
+    }
+
+    //Listar Usuarios
     public function listarusuarios(){
         $this->conexion();
         $sql = "select * from users";
         $result = $this->mi->query($sql);
         $lista = array();
-        while($rs = mysqli_fetch_array($result)){
+        while ($rs = mysqli_fetch_array($result)) {
             $id = $rs['id_usu'];
             $rut = $rs['rut'];
             $nombre = $rs['nombre'];
@@ -310,6 +361,41 @@ class Controller{
         return $lista;
     }
 
+    //Actualizar Usuario
+    public function actualizarusuario($id, $rut, $nombre, $apellido, $correo, $direccion, $region, $comuna, $telefono ){
+        $this->conexion();
+        $sql = "update users set rut = '$rut', nombre = '$nombre', apellidos = '$apellido', email = '$correo', direccion = '$direccion', region = $region, comuna = $comuna, telefono = '$telefono', updated_at = now() where id_usu = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Actualizar Estado
+    public function actualizarestado($id, $estado){
+        $this->conexion();
+        $sql = "update users set estado = $estado where id_usu = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Actualizar Contraseña
+    public function actualizarpass($id, $pass){
+        $this->conexion();
+        $sql = "update users set password = '$pass' where id_usu = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Eliminar Usuario
+    public function eliminarusuario($id){
+        $this->conexion();
+        $sql = "delete from users where id_usu = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
     //Permisos
     public function listarPermisos(){
         $this->conexion();
@@ -336,6 +422,19 @@ class Controller{
         return json_encode($result);
     }
 
+    //Validar Permiso de Usuario
+    public function validarPermiso($usuario, $permiso){
+        $this->conexion();
+        $sql = "select * from permisosusuarios where idusuario = $usuario and idpermiso = $permiso";
+        $result = $this->mi->query($sql);
+        if($rs = mysqli_fetch_array($result)){
+            $this->desconectar();
+            return true;
+        }
+        $this->desconectar();
+        return false;
+    }
+
     //Listar Permisos de Usuario
     public function listarPermisosUsuario($usuario){
         $this->conexion();
@@ -345,12 +444,222 @@ class Controller{
         while($rs = mysqli_fetch_array($result)){
             $id = $rs['id'];
             $permiso = $rs['nombre'];
-            $permisoUsuario = new Permisos($id, $usuario, $permiso);
+            $permisoUsuario = new Permisos($id, $permiso, $usuario);
             $lista[] = $permisoUsuario;
         }
         $this->desconectar();
         return $lista;
     }
+
+    //Eliminar Permiso de Usuario
+    public function eliminarPermisoUsuario($id){
+        $this->conexion();
+        $sql = "delete from permisosusuarios where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    ///Eliminar Todos los Permisos de Usuario
+    public function eliminarPermisoUsuario1($id){
+        $this->conexion();
+        $sql = "delete from permisosusuarios where idusuario = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+
+    //RegistrarCaja Compensacion
+    public function RegistrarCajaCompensacion($nombre){
+        $this->conexion();
+        $sql = "insert into cajascompensacion values(null, '$nombre')";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Listar Cajas Compensacion
+    public function listarCajasCompensacion(){
+        $this->conexion();
+        $sql = "select * from cajascompensacion";
+        $result = $this->mi->query($sql);
+        $lista = array();
+        while($rs = mysqli_fetch_array($result)){
+            $id = $rs['id'];
+            $nombre = $rs['nombre'];
+            $caja = new Cajacompensacion($id, $nombre);
+            $lista[] = $caja;
+        }
+        $this->desconectar();
+        return $lista;
+    }
+
+    //Actualizar Caja Compensacion
+    public function actualizarCajaCompensacion($id, $nombre){
+        $this->conexion();
+        $sql = "update cajascompensacion set nombre = '$nombre' where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Eliminar Caja Compensacion
+    public function eliminarCajaCompensacion($id){
+        $this->conexion();
+        $sql = "delete from cajascompensacion where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Registrar Mutuales
+    public function RegistrarMutual($nombre){
+        $this->conexion();
+        $sql = "insert into mutuales values(null, '$nombre')";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Listar Mutuales
+    public function listarMutuales(){
+        $this->conexion();
+        $sql = "select * from mutuales";
+        $result = $this->mi->query($sql);
+        $lista = array();
+        while($rs = mysqli_fetch_array($result)){
+            $id = $rs['id'];
+            $nombre = $rs['nombre'];
+            $mutual = new Mutuales($id, $nombre);
+            $lista[] = $mutual;
+        }
+        $this->desconectar();
+        return $lista;
+    }
+
+    //Actualizar Mutual
+    public function actualizarMutual($id, $nombre){
+        $this->conexion();
+        $sql = "update mutuales set nombre = '$nombre' where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Eliminar Mutual
+    public function eliminarMutual($id){
+        $this->conexion();
+        $sql = "delete from mutuales where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //validarEmpresa
+    public function validarEmpresa($rut){
+        $this->conexion();
+        $sql = "select * from empresa where rut = '$rut'";
+        $result = $this->mi->query($sql);
+        if($rs = mysqli_fetch_array($result)){
+            $this->desconectar();
+            return true;
+        }
+        $this->desconectar();
+        return false;
+    }
+
+    //Registrar Empresa
+    public function RegistrarEmpresa($rut, $razonsocial, $direccion, $region, $comuna, $ciudad, $telefono, $email, $giro, $cajascompensacion, $mutuales, $cotizacionbasica, $cotizacionleysanna, $cotizacionadicional){
+        $this->conexion();
+        $sql = "insert into empresa values(null, '$rut', '$razonsocial', '$direccion', $region, $comuna, $ciudad, '$telefono', '$email','$giro', $cajascompensacion, $mutuales, $cotizacionbasica, $cotizacionleysanna, $cotizacionadicional,now(), now());";
+        return $sql;
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Listar Empresas
+    public function listarEmpresas(){
+        $this->conexion();
+        $sql = "select empresa.id as id, rut, razonsocial, direccion, regiones.nombre as region, comunas.nombre as comuna, ciudades.nombre as ciudad, telefono, email, giro, cajascompensacion.nombre as cajascompensacion, mutuales.nombre as mutuales, cotizacionbasica, cotizacionleysanna, cotizacionadicional, created_at, updated_at from empresa, regiones, comunas, ciudades, cajascompensacion, mutuales where empresa.idregion = regiones.id and empresa.idcomuna = comunas.id and empresa.idciudad = ciudades.id and empresa.idcajascompensacion = cajascompensacion.id and empresa.idmutuales = mutuales.id";
+        $result = $this->mi->query($sql);
+        $lista = array();
+        while($rs = mysqli_fetch_array($result)){
+            $id = $rs['id'];
+            $rut = $rs['rut'];
+            $razonsocial = $rs['razonsocial'];
+            $direccion = $rs['direccion'];
+            $region = $rs['region'];
+            $comuna = $rs['comuna'];
+            $ciudad = $rs['ciudad'];
+            $telefono = $rs['telefono'];
+            $email = $rs['email'];
+            $giro = $rs['giro'];
+            $cajascompensacion = $rs['cajascompensacion'];
+            $mutuales = $rs['mutuales'];
+            $cotizacionbasico = $rs['cotizacionbasico'];
+            $cotizacionleysanna = $rs['cotizacionleysanna'];
+            $cotizacionadicional = $rs['cotizacionadicional'];
+            $created_at = $rs['created_at'];
+            $updated_at = $rs['updated_at'];
+            $empresa = new Empresa($id, $rut, $razonsocial, $direccion, $region, $comuna, $ciudad, $telefono, $email, $giro, $cajascompensacion, $mutuales, $cotizacionbasico, $cotizacionleysanna, $cotizacionadicional, $created_at, $updated_at);
+            $lista[] = $empresa;
+        }
+        $this->desconectar();
+        return $lista;
+    }
+
+    //Buscar Empresa
+    public function buscarEmpresa($id){
+        $this->conexion();
+        $sql = "select empresa.id as id, rut, razonsocial, direccion, regiones.nombre as region, comunas.nombre as comuna, ciudades.nombre as ciudad, telefono, email,giro, cajascompensacion.nombre as cajascompensacion, mutuales.nombre as mutuales, cotizacionbasica, cotizacionleysanna, cotizacionadicional, created_at, updated_at from empresa, regiones, comunas, ciudades, cajascompensacion, mutuales where empresa.idregion = regiones.id and empresa.idcomuna = comunas.id and empresa.idciudad = ciudades.id and empresa.idcajascompensacion = cajascompensacion.id and empresa.idmutuales = mutuales.id and empresa.id = $id";
+        $result = $this->mi->query($sql);
+        $lista = array();
+        while($rs = mysqli_fetch_array($result)){
+            $id = $rs['id'];
+            $rut = $rs['rut'];
+            $razonsocial = $rs['razonsocial'];
+            $direccion = $rs['direccion'];
+            $region = $rs['region'];
+            $comuna = $rs['comuna'];
+            $ciudad = $rs['ciudad'];
+            $telefono = $rs['telefono'];
+            $email = $rs['email'];
+            $giro = $rs['giro'];
+            $cajascompensacion = $rs['cajascompensacion'];
+            $mutuales = $rs['mutuales'];
+            $cotizacionbasico = $rs['cotizacionbasico'];
+            $cotizacionleysanna = $rs['cotizacionleysanna'];
+            $cotizacionadicional = $rs['cotizacionadicional'];
+            $created_at = $rs['created_at'];
+            $updated_at = $rs['updated_at'];
+            $empresa = new Empresa($id, $rut, $razonsocial, $direccion, $region, $comuna, $ciudad, $telefono, $email,$giro, $cajascompensacion, $mutuales, $cotizacionbasico, $cotizacionleysanna, $cotizacionadicional, $created_at, $updated_at);
+            $lista[] = $empresa;
+        }
+        $this->desconectar();
+        return $lista;
+    }
+    
+
+    //Actualizar Empresa
+    public function actualizarEmpresa($id, $rut, $razonsocial, $direccion, $region, $comuna, $ciudad, $telefono, $email, $giro, $cajascompensacion, $mutuales, $cotizacionbasica, $cotizacionleysanna, $cotizacionadicional){
+        $this->conexion();
+        $sql = "update empresa set rut = '$rut', razonsocial = '$razonsocial', direccion = '$direccion', idregion = $region, idcomuna = $comuna, idciudad = $ciudad, telefono = '$telefono', email = '$email', giro='$giro', idcajascompensacion = $cajascompensacion, idmutuales = $mutuales, cotizacionbasica = $cotizacionbasica, cotizacionleysanna = $cotizacionleysanna, cotizacionadicional = $cotizacionadicional, updated_at = now() where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
+    //Eliminar Empresa
+    public function eliminarEmpresa($id){
+        $this->conexion();
+        $sql = "delete from empresa where id = $id";
+        $result = $this->mi->query($sql);
+        $this->desconectar();
+        return json_encode($result);
+    }
+
 
 
 }

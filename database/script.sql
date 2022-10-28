@@ -159,11 +159,14 @@ create table empresa(
     ciudad int not null references ciudades(id),
     telefono varchar(20) not null,
     email varchar(200) not null,
+    giro varchar(200) not null,
     cajascompensacion int not null references cajascompensacion(id),
     mutuales int not null references mutuales(id),
     cotizacionbasica decimal(10,2) not null,
     cotizacionleysanna decimal(10,2) not null,
-    cotizacionadicional decimal(10,2) not null
+    cotizacionadicional decimal(10,2) not null,
+    created_at timestamp not null default current_timestamp,
+    updated_at timestamp not null default current_timestamp on update current_timestamp
 );
 
 create table representantelegal(
@@ -215,5 +218,10 @@ create table trabajadores(
     email varchar(200) not null
 );
 
-
+create table AuditoriaEventos(
+    id int not null auto_increment primary key,
+    idusuario int not null references users(id_usu),
+    evento varchar(200) not null,
+    fecha timestamp not null default current_timestamp
+);
 
