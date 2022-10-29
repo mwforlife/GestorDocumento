@@ -1,6 +1,11 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+?>
 <!DOCTYPE html>
-<html lang="en">
-	<head>
+<html lang="es">
+
+<head>
 
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
@@ -19,6 +24,8 @@
 
 	<!-- Icons css-->
 	<link href="assets/css/icons.css" rel="stylesheet" />
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
+
 
 	<!-- Style css-->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -503,32 +510,37 @@
 													</tr>
 												</thead>
 												<tbody>
-													<tr class="border-bottom-0">
-														<td class="coin_icon d-flex fs-15 font-weight-semibold">
-															11.111.111-1
-														</td>
-														<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
-
-														<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
-
-														<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
-
-														<td class="text-center">
-															<a class="btn btn-outline-info btn-sm rounded-11" data-toggle="tooltip" data-original-title="Ver Más">
-																<i class="fa fa-eye">
-																</i>
-															</a>
-
-															<a class="btn btn-outline-warning btn-sm rounded-11" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pen"></i></a>
-															<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-															<a class="btn btn-outline-success btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Asignar Usuario">
-																<i class="fa fa-user-plus">
-																	
-																</i>
-															</a>
-
-														</td>
-													</tr>
+													<?php
+													$lista = $c->listarEmpresas();
+													foreach ($lista as $object) {
+														echo "<tr class='border-bottom-0'>";
+														echo "<td class='coin_icon d-flex fs-15 font-weight-semibold'>";
+														echo $object->getRut();
+														echo "</td>";
+														echo "<td class='text-muted fs-15 font-weight-semibold'>";
+														echo $object->getRazonSocial();
+														echo "</td>";
+														echo "<td class='text-muted fs-15 font-weight-semibold'>";
+														echo $object->getEmail();
+														echo "</td>";
+														echo "<td class='text-muted fs-15 font-weight-semibold'>";
+														echo $object->getTelefono();
+														echo "</td>";
+														echo "<td class='text-center'>";
+														echo "<a class='btn btn-outline-info btn-sm rounded-11 mr-2' onclick='more(" . $object->getId() . ")' data-toggle='modal' data-target='#modalEmpresa' data-original-title='Ver Más'>";
+														echo "<i class='fa fa-eye'>";
+														echo "</i>";
+														echo "</a>";
+														echo "<a href='Editarempresa.php?code=" . $object->getId() . "' class='btn btn-outline-warning mr-2 btn-sm rounded-11' data-toggle='tooltip' data-original-title='Edit'><i class='fa fa-pen'></i></a>";
+														echo "<a onclick='Eliminar(" . $object->getId() . ")' class='btn btn-outline-danger btn-sm rounded-11 mr-2' data-toggle='tooltip' data-original-title='Delete'><i class='fa fa-trash'></i></a>";
+														echo "<a href='AsignarUsuario.php?code=" . $object->getId() . "' class='btn btn-outline-success btn-sm rounded-11 mr-2' data-toggle='tooltip' data-original-title='Asignar Usuario'>";
+														echo "<i class='fa fa-user-plus'>";
+														echo "</i>";
+														echo "</a>";
+														echo "</td>";
+														echo "</tr>";
+													}
+													?>
 												</tbody>
 											</table>
 										</div>
@@ -718,6 +730,17 @@
 
 	<!-- Custom js -->
 	<script src="assets/js/custom.js"></script>
+	<script src="JsFunctions/validation.js"></script>
+	<script src="JsFunctions/Alert/toastify.js"></script>
+	<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+	<script src="JsFunctions/Alert/alert.js"></script>
+	<script src="JsFunctions/Comunas.js"></script>
+	<script src="JsFunctions/precargado.js"></script>
+	<script src="JsFunctions/Empresa.js"></script>
 
 
-</body></html>
+
+
+</body>
+
+</html>
