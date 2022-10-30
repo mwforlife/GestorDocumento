@@ -1,6 +1,25 @@
+<?php
+require 'php/controller.php';
+$c = new Controller();
+$nombre ="";
+$id=0;
+if (isset($_GET['code'])) {
+    $id = $_GET['code'];
+    $region = $c->buscarregion($id);
+    if ($region != null) {
+        $nombre = $region->getNombre();
+        $id = $region->getId();
+    } else {
+        header("Location: regiones.php");
+    }
+}else{
+	header("Location: regiones.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
+
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 		<meta name="description" content="">
@@ -18,6 +37,7 @@
 
 		<!-- Icons css-->
 		<link href="assets/css/icons.css" rel="stylesheet"/>
+	<link href="assets/css/toastify.min.css" rel="stylesheet" />
 
 		<!-- Style css-->
 		<link href="assets/css/style.css" rel="stylesheet">
@@ -57,7 +77,7 @@
 			<!-- Sidemenu -->
 			<div class="main-sidebar main-sidebar-sticky side-menu">
 				<div class="sidemenu-logo">
-					<a class="main-logo" href="index.html">
+					<a class="main-logo" href="index.php">
 						<img src="assets/img/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
 						<img src="assets/img/brand/icon.png" class="header-brand-img icon-logo" alt="logo">
 						<img src="assets/img/brand/dark-logo.png" class="header-brand-img desktop-logo theme-logo" alt="logo">
@@ -71,64 +91,64 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-home sidemenu-icon"></i><span class="sidemenu-label">Definicion de Datos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="isapres.html">ISAPRES</a>
+									<a class="nav-sub-link" href="isapres.php">ISAPRES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="afp.html">AFP</a>
+									<a class="nav-sub-link" href="afp.php">AFP</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="regiones.html">REGIONES</a>
+									<a class="nav-sub-link" href="regiones.php">REGIONES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="comunas.html">COMUNAS</a>
+									<a class="nav-sub-link" href="comunas.php">COMUNAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="ciudades.html">CIUDADES</a>
+									<a class="nav-sub-link" href="ciudades.php">CIUDADES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="jornadas.html">JORNADAS</a>
+									<a class="nav-sub-link" href="jornadas.php">JORNADAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tiposueldo.html">TIPO SUELDO BASE</a>
+									<a class="nav-sub-link" href="tiposueldo.php">TIPO SUELDO BASE</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cargos.html">CARGOS</a>
+									<a class="nav-sub-link" href="cargos.php">CARGOS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cajacompensacion.html">CAJAS DE COMPENSACIÓN</a>
+									<a class="nav-sub-link" href="cajacompensacion.php">CAJAS DE COMPENSACIÓN</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="mutuales.html">MUTUALES DE SEGURIDAD</a>
+									<a class="nav-sub-link" href="mutuales.php">MUTUALES DE SEGURIDAD</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="asignacionfamiliar.html">TRAMOS ASIGNACION FAMILIAR</a>
+									<a class="nav-sub-link" href="asignacionfamiliar.php">TRAMOS ASIGNACION FAMILIAR</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tipocontrato.html">TIPO CONTRATO LABORAL</a>
+									<a class="nav-sub-link" href="tipocontrato.php">TIPO CONTRATO LABORAL</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="causaltermino.html">CAUSAL TERMINO CONTRATO</a>
+									<a class="nav-sub-link" href="causaltermino.php">CAUSAL TERMINO CONTRATO</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-header"><span class="nav-label">FUNCIONES</span></li>
 						<li class="nav-item">
-							<a class="nav-link" href="tipodocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
+							<a class="nav-link" href="tipodocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="redactardocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
+							<a class="nav-link" href="redactardocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="asociardocumentos.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
+							<a class="nav-link" href="asociardocumentos.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link with-sub" href="#"><i class="fe fe-message-square sidemenu-icon"></i><span class="sidemenu-label">Empresas</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="empresas.html">Registro de Empresas</a>
+									<a class="nav-sub-link" href="empresas.php">Registro de Empresas</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="centrocosto.html">Registro de Centro de Costo</a>
+									<a class="nav-sub-link" href="centrocosto.php">Registro de Centro de Costo</a>
 								</li>
 							</ul>
 						</li>
@@ -136,10 +156,10 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-droplet sidemenu-icon"></i><span class="sidemenu-label">Auditoria</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriatrabajadores.html">Auditoria de trabajadores</a>
+									<a class="nav-sub-link" href="auditoriatrabajadores.php">Auditoria de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriaeventos.html">Auditoria de eventos</a>
+									<a class="nav-sub-link" href="auditoriaeventos.php">Auditoria de eventos</a>
 								</li>
 								
 							</ul>
@@ -148,16 +168,16 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-map-pin sidemenu-icon"></i><span class="sidemenu-label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="trabajadores.html">Registro de trabajadores</a>
+									<a class="nav-sub-link" href="trabajadores.php">Registro de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentoficha.html">Registro de documento a Ficha trabajador</a>
+									<a class="nav-sub-link" href="documentoficha.php">Registro de documento a Ficha trabajador</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="anotaciones.html">Registro de Anotaciones</a>
+									<a class="nav-sub-link" href="anotaciones.php">Registro de Anotaciones</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="historialtrabajador.html">Historial de trabajadores</a>
+									<a class="nav-sub-link" href="historialtrabajador.php">Historial de trabajadores</a>
 								</li>
 							</ul>
 						</li>
@@ -165,16 +185,16 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-layout sidemenu-icon"></i><span class="sidemenu-label">Documentos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentosmasivos.html">Generacion de Documentos Masivos</a>
+									<a class="nav-sub-link" href="documentosmasivos.php">Generacion de Documentos Masivos</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentospersonalizados.html">Generacion de Documentos Personalizados</a>
+									<a class="nav-sub-link" href="documentospersonalizados.php">Generacion de Documentos Personalizados</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="contratoindividual.html">Generacion de Contrato Individual</a>
+									<a class="nav-sub-link" href="contratoindividual.php">Generacion de Contrato Individual</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="finiquitoindividual.html">Generacion de Finiquitos Individual</a>
+									<a class="nav-sub-link" href="finiquitoindividual.php">Generacion de Finiquitos Individual</a>
 								</li>
 							</ul>
 						</li>
@@ -182,7 +202,7 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-box sidemenu-icon"></i><span class="sidemenu-label">Gestion de Usuarios</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="usuarios.html">Registrar Usuarios</a>
+									<a class="nav-sub-link" href="usuarios.php">Registrar Usuarios</a>
 								</li>
 								
 							</ul>
@@ -200,8 +220,20 @@
 					</div>
 					<div class="main-header-center">
 						<div class="responsive-logo">
-							<a href="index.html"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
-							<a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
+							<a href="index.php"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
+							<a href="index.php"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
+						</div>
+						<div class="input-group">
+							<div class="mt-0">
+								<form class="form-inline">
+									<div class="search-element">
+										<input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" tabindex="1">
+										<button class="btn" type="submit">
+											<i class="fa fa-search"></i>
+										</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 					<div class="main-header-right">
@@ -209,6 +241,61 @@
 							<a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
 								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></i>
 							</a>
+						</div>
+						<div class="dropdown main-header-notification">
+							<a class="nav-link icon" href="">
+								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg></i>
+								<span class="badge badge-danger nav-link-badge">4</span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow  animated p-0">
+								<div class="notifications-menu">
+									<a class="dropdown-item d-flex p-3 border-bottom rounded-top " href="#">
+										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-primary brround">
+											<i class="fe fe-upload"></i>
+										</span>
+										<div>
+											<span class="font-weight-bold text-dark"> New file Uploaded </span>
+											<div class="small text-muted d-flex">
+												5 hour ago
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
+										<span class="avatar avatar-md  fs-20 mr-3 align-self-center cover-image bg-teal brround">
+											<i class="fe fe-arrow-up-circle"></i>
+										</span>
+										<div>
+											<span class="font-weight-bold text-dark"> Account Updated</span>
+											<div class="small text-muted d-flex">
+												20 mins ago
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
+										<span class="avatar avatar-md fs-20 mr-3 align-self-center cover-image bg-info brround">
+											<i class="fe fe-shopping-bag"></i>
+										</span>
+										<div>
+											<span class="font-weight-bold text-dark"> Order's Recevied</span>
+											<div class="small text-muted d-flex">
+												1 hour ago
+											</div>
+										</div>
+									</a>
+									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
+										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-pink brround">
+											<i class="fe fe-database"></i>
+										</span>
+										<div>
+											<span class="font-weight-bold text-dark">Server Rebooted</span>
+											<div class="small text-muted d-flex">
+												2 hour ago
+											</div>
+										</div>
+									</a>
+								</div>
+								<a href="#" class="dropdown-item text-center notifications-menu1">View all Notification</a>
+							</div>
 						</div>
 						<div class="dropdown d-md-flex">
 							<a class="nav-link icon full-screen-link fullscreen-button" href="">
@@ -225,13 +312,13 @@
 									<h6 class="main-notification-title">Alexandra Churchill</h6>
 									<p class="main-notification-text">Web Designer</p>
 								</div>
-								<a class="dropdown-item border-top" href="profile.html">
+								<a class="dropdown-item border-top" href="profile.php">
 									<i class="fe fe-user"></i> Mi Perfil
 								</a>
-								<a class="dropdown-item" href="lockscreen.html">
+								<a class="dropdown-item" href="lockscreen.php">
 									<i class="fe fe fe-unlock"></i> Lock screen
 								</a>
-								<a class="dropdown-item" href="signin.html">
+								<a class="dropdown-item" href="signin.php">
 									<i class="fe fe-power"></i> Cerrar Sesíon
 								</a>
 							</div>
@@ -340,19 +427,19 @@
 										<h6 class="main-notification-title">Alexandra Churchill</h6>
 										<p class="main-notification-text">Web Designer</p>
 									</div>
-									<a class="dropdown-item border-top" href="profile.html">
+									<a class="dropdown-item border-top" href="profile.php">
 										<i class="fe fe-user"></i> My Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-edit"></i> Edit Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-settings"></i> Account Settings
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe fe-unlock"></i> Lock screen
 									</a>
-									<a class="dropdown-item" href="signin.html">
+									<a class="dropdown-item" href="signin.php">
 										<i class="fe fe-power"></i> Sign Out
 									</a>
 								</div>
@@ -373,131 +460,98 @@
 
 				<div class="container-fluid">
 					<div class="inner-body">
-
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">AFP</h1>
+								<h1 class="main-content-title tx-30">Nacionalidad</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
 						</div>
 						<!-- End Page Header -->
-						<div class="row">
-							<div class="col-lg-12">
-								<div class="card orverflow-hidden">
-									<div class="card-body">
-										<div>
-											<h6 class="main-content-label mb-1">Registro de AFP</h6>
-											<p class="text-mutted card-sub-title"></p>
-										</div>
-										<form action="" class="needs-validation was-validated">
-											<div class="row">
-												<div class="col-lg-6">
-													<div class="form-group has-success mg-b-0">
-														<input class="form-control" placeholder="Nombre AFP" required="" type="text" value="">
-													</div>
-												</div>
-												<div class="col-lg-6 mg-t-20 mg-lg-t-0">
-													<div class="form-group has-danger mg-b-0">
-														<input class="form-control" placeholder="Porcentaje de Descuento" required="" type="number" min="0">
-													</div>
-												</div>
-												<div class="col-md-12 mt-3 text-right">
-													<button href="#" class="btn btn-warning btn-md"> <i class="fa fa-arrow-left"></i> Restablecer</button>
-													<button href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card orverflow-hidden">
+								<div class="card-body">
+									<div>
+										<h6 class="main-content-label mb-1">Registro de Nacionalidad</h6>
+										<p class="text-mutted card-sub-title"></p>
+									</div>
+									<form id="ComunaForm" name="ComunaForm" action="" class="needs-validation was-validated">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="form-group has-success mg-b-0">
+													<label>Codigo</label>
+													<input  class="form-control" id="ComunaID" name="ComunaID" placeholder="Codigo Comuna" required="" type="number" value="">
 												</div>
 											</div>
-										</form>
-									</div>
+											<div class="col-lg-6">
+												<div class="form-group has-success mg-b-0">
+													<label>Codigo (PREVIRED)</label>
+													<input  class="form-control" id="ComunaID1" name="ComunaID1" placeholder="Codigo Comuna (PREVIRED)" required="" type="number" value="">
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<div class="form-group has-success mg-b-0">
+													<label>Nombre </label>
+													<input  class="form-control" id="ComunaName" name="ComunaName" placeholder="Nombre Comuna" required="" type="text" value="">
+												</div>
+											</div>
+											<input type="hidden" value="<?php echo $id; ?>" name="RegionId">
+											<div class="col-md-12 mt-3 text-right">
+												<button type="reset" href="#" class="btn btn-warning btn-md"> <i class="fa fa-refresh"></i> Restablecer</button>
+												<button type="submit"  href="#" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
+											</div>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>
-						<!-- ROW-4 opened -->
-						<div class="row">
-							<div class="col-xl-12 col-lg-12 col-md-12">
-								<div class="card transcation-crypto" id="transcation-crypto">
-									<div class="card-header bd-b-0">
-										<h4 class="card-title font-weight-semibold mb-0">Listado AFP</h4>
-									</div>
-									<div class="card-body p-0">
-										<div class="">
-											<div class="table-responsive">
-												<table class="table text-nowrap" id="example1">
-													<thead class="border-top">
-														<tr>
-															<th class="bg-transparent">AFP</th>
-															<th class="bg-transparent">Descuento</th>
-															<th class="bg-transparent text-center">Accion</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr class="border-bottom-0">
-															<td class="coin_icon d-flex">
-																<div class="table-crypto"> <i class="cf cf-btc"></i> </div>
-																<span class=" my-auto"> <b class="font-weight-medium">Bitcoin</b></span>
-															</td>
-															<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:15am</td>
-															<td class="text-center">
-																<a class="btn btn-outline-info btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Edit"><i><svg class="table-edit" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg></i></a>
-																<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i><svg class="table-delete" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg></i></a>
-															</td>
-														</tr>
-														<tr class="border-bottom-0">
-															<td class="coin_icon d-flex">
-																<div class="table-crypto"> <i class="fa cf cf-eth "></i> </div>
-																<span class=" my-auto"> <b class="font-weight-medium">Ethereum</b></span>
-															</td>
-															<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 10:20am</td>
-															<td class="text-center">
-																<a class="btn btn-outline-info btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Edit"><i><svg class="table-edit" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg></i></a>
-																<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i><svg class="table-delete" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg></i></a>
-															</td>
-														</tr>
-														<tr class="border-bottom-0">
-															<td class="coin_icon d-flex">
-																<div class="table-crypto"> <i class="cf cf-ltc"></i> </div>
-																<span class=" my-auto"> <b class="font-weight-medium">Litecoin</b></span>
-															</td>
-															<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 4:20am</td>
-															<td class="text-center">
-																<a class="btn btn-outline-info btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Edit"><i><svg class="table-edit" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg></i></a>
-																<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i><svg class="table-delete" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg></i></a>
-															</td>
-														</tr>
+					</div>
 
-														<tr class="border-bottom-0">
-															<td class="coin_icon d-flex">
-																<div class="table-crypto"> <i class="cf cf-xrp"></i> </div>
-																<span class=" my-auto"> <b class="font-weight-medium">Ripple</b></span>
-															</td>
-															<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 11:00pm</td>
-															<td class="text-center">
-																<a class="btn btn-outline-info btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Edit"><i><svg class="table-edit" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg></i></a>
-																<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i><svg class="table-delete" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg></i></a>
-															</td>
-														</tr>
-														<tr class="border-bottom-0">
-															<td class="coin_icon d-flex">
-																<div class="table-crypto"> <i class="fa cf cf-usdt"></i> </div>
-																<span class=" my-auto"> <b class="font-weight-medium">Tether</b></span>
-															</td>
-															<td class="text-muted fs-15 font-weight-semibold">25 jan 2020 6:28am</td>
-															<td class="text-center">
-																<a class="btn btn-outline-info btn-sm rounded-11 mr-2" data-toggle="tooltip" data-original-title="Edit"><i><svg class="table-edit" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM5.92 19H5v-.92l9.06-9.06.92.92L5.92 19zM20.71 5.63l-2.34-2.34c-.2-.2-.45-.29-.71-.29s-.51.1-.7.29l-1.83 1.83 3.75 3.75 1.83-1.83c.39-.39.39-1.02 0-1.41z"/></svg></i></a>
-																<a class="btn btn-outline-danger btn-sm rounded-11" data-toggle="tooltip" data-original-title="Delete"><i><svg class="table-delete" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="16"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg></i></a>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
+						<!-- ROW-4 opened -->
+					<div class="row">
+						<div class="col-xl-12 col-lg-12 col-md-12">
+							<div class="card transcation-crypto" id="transcation-crypto">
+								<div class="card-header bd-b-0">
+									<h4 class="card-title font-weight-semibold mb-0">Listado de Nacionalidades</h4>
+								</div>
+								<div class="card-body ">
+									<div class="">
+										<div class="table-responsive">
+											<table class="table text-nowrap" id="example1">
+												<thead class="border-top">
+													<tr>
+														<th class="border-bottom-0">Codigo</th>
+														<th class="bg-transparent">Comuna(PREVIRED)</th>
+														<th class="bg-transparent text-center">Accion</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php
+													$lista = $c->listarcomunas($id);
+													if (count($lista) > 0) {
+														foreach ($lista as $object) {
+															echo "<tr>";
+															echo "<td>" . $object->getId() . "</td>";
+															echo "<td>" . $object->getNombre() . "</td>";
+															echo "<td class='text-center'>
+																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")' data-original-title='Editar'><i class='fa fa-pen'></i></a>
+																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
+															</td>";
+															echo "</tr>";
+														}
+													}
+													?>
+												</tbody>
+											</table>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<!-- ROW-4 END -->
+					</div>
 
 					</div>
 				</div>
@@ -626,6 +680,25 @@
 			</div>
 			<!-- End Sidebar -->
 
+
+		<!-- Edit Modal -->
+		<div class="modal fade" id="modaledit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="staticBackdropLabel">Editar Comuna</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		</div>
 		<!-- End Page -->
 
@@ -678,7 +751,9 @@
 
 		<!-- Custom js -->
 		<script src="assets/js/custom.js"></script>
-
-
+		<script src="JsFunctions/Alert/toastify.js"></script>
+		<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
+		<script src="JsFunctions/Alert/alert.js"></script>
+		<script src="JsFunctions/Comunas.js"></script>
 	</body>
 </html>

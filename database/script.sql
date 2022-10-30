@@ -30,29 +30,54 @@ insert into discapacidad(nombre) values('Si');
 insert into discapacidad(nombre) values('No');
 
 create table regiones (
-    id int not null auto_increment primary key, 
-    nombre varchar(50) not null
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null, 
+    nombre varchar(200) not null
 );
 
 create table comunas (
-    id int not null primary key,
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null,
     region int not null references regiones(id)
 );
 
 create table ciudades (
-    id int not null primary key,
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null,
     region int not null references regiones(id)
 );
 
 create table nacionalidad (
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table afp(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
+    nombre varchar(50) not null,
+    tasa decimal(10,2) not null
+);
+
+create table tiposueldo(
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
+    nombre varchar(50) not null
+);
+
+create table tipodocumento(
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
@@ -66,6 +91,8 @@ insert into tipoisapre(nombre) values('Isapre');
 
 create table isapre(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null,
     tipo int not null references tipoisapre(id)
 );
@@ -73,31 +100,50 @@ create table isapre(
 
 create table cajascompensacion(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table mutuales(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table tipocontrato(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
+    nombre varchar(50) not null
+);
+
+create table jornadas(
+    id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table tramosasignacionfamiliar(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table causalterminocontrato(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 
 create table cargos(
     id int not null auto_increment primary key,
+    codigo varchar(20) not null,
+    codigoprevired varchar(20) not null,
     nombre varchar(50) not null
 );
 

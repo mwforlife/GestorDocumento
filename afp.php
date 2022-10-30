@@ -1,7 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
-
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 		<meta name="description" content="">
@@ -58,7 +57,7 @@
 			<!-- Sidemenu -->
 			<div class="main-sidebar main-sidebar-sticky side-menu">
 				<div class="sidemenu-logo">
-					<a class="main-logo" href="index.html">
+					<a class="main-logo" href="index.php">
 						<img src="assets/img/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
 						<img src="assets/img/brand/icon.png" class="header-brand-img icon-logo" alt="logo">
 						<img src="assets/img/brand/dark-logo.png" class="header-brand-img desktop-logo theme-logo" alt="logo">
@@ -72,64 +71,64 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-home sidemenu-icon"></i><span class="sidemenu-label">Definicion de Datos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="isapres.html">ISAPRES</a>
+									<a class="nav-sub-link" href="isapres.php">Institución de Salud</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="afp.html">AFP</a>
+									<a class="nav-sub-link" href="afp.php">AFP</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="regiones.html">REGIONES</a>
+									<a class="nav-sub-link" href="regiones.php">REGIONES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="comunas.html">COMUNAS</a>
+									<a class="nav-sub-link" href="comunas.php">COMUNAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="ciudades.html">CIUDADES</a>
+									<a class="nav-sub-link" href="ciudades.php">CIUDADES</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="jornadas.html">JORNADAS</a>
+									<a class="nav-sub-link" href="jornadas.php">JORNADAS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tiposueldo.html">TIPO SUELDO BASE</a>
+									<a class="nav-sub-link" href="tiposueldo.php">TIPO SUELDO BASE</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cargos.html">CARGOS</a>
+									<a class="nav-sub-link" href="cargos.php">CARGOS</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="cajacompensacion.html">CAJAS DE COMPENSACIÓN</a>
+									<a class="nav-sub-link" href="cajacompensacion.php">CAJAS DE COMPENSACIÓN</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="mutuales.html">MUTUALES DE SEGURIDAD</a>
+									<a class="nav-sub-link" href="mutuales.php">MUTUALES DE SEGURIDAD</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="asignacionfamiliar.html">TRAMOS ASIGNACION FAMILIAR</a>
+									<a class="nav-sub-link" href="asignacionfamiliar.php">TRAMOS ASIGNACION FAMILIAR</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="tipocontrato.html">TIPO CONTRATO LABORAL</a>
+									<a class="nav-sub-link" href="tipocontrato.php">TIPO CONTRATO LABORAL</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="causaltermino.html">CAUSAL TERMINO CONTRATO</a>
+									<a class="nav-sub-link" href="causaltermino.php">CAUSAL TERMINO CONTRATO</a>
 								</li>
 							</ul>
 						</li>
 						<li class="nav-header"><span class="nav-label">FUNCIONES</span></li>
 						<li class="nav-item">
-							<a class="nav-link" href="tipodocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
+							<a class="nav-link" href="tipodocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="redactardocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
+							<a class="nav-link" href="redactardocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="asociardocumentos.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
+							<a class="nav-link" href="asociardocumentos.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link with-sub" href="#"><i class="fe fe-message-square sidemenu-icon"></i><span class="sidemenu-label">Empresas</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="empresas.html">Registro de Empresas</a>
+									<a class="nav-sub-link" href="empresas.php">Registro de Empresas</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="centrocosto.html">Registro de Centro de Costo</a>
+									<a class="nav-sub-link" href="centrocosto.php">Registro de Centro de Costo</a>
 								</li>
 							</ul>
 						</li>
@@ -137,10 +136,10 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-droplet sidemenu-icon"></i><span class="sidemenu-label">Auditoria</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriatrabajadores.html">Auditoria de trabajadores</a>
+									<a class="nav-sub-link" href="auditoriatrabajadores.php">Auditoria de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="auditoriaeventos.html">Auditoria de eventos</a>
+									<a class="nav-sub-link" href="auditoriaeventos.php">Auditoria de eventos</a>
 								</li>
 								
 							</ul>
@@ -149,16 +148,16 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-map-pin sidemenu-icon"></i><span class="sidemenu-label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="trabajadores.html">Registro de trabajadores</a>
+									<a class="nav-sub-link" href="trabajadores.php">Registro de trabajadores</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentoficha.html">Registro de documento a Ficha trabajador</a>
+									<a class="nav-sub-link" href="documentoficha.php">Registro de documento a Ficha trabajador</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="anotaciones.html">Registro de Anotaciones</a>
+									<a class="nav-sub-link" href="anotaciones.php">Registro de Anotaciones</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="historialtrabajador.html">Historial de trabajadores</a>
+									<a class="nav-sub-link" href="historialtrabajador.php">Historial de trabajadores</a>
 								</li>
 							</ul>
 						</li>
@@ -166,16 +165,16 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-layout sidemenu-icon"></i><span class="sidemenu-label">Documentos</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentosmasivos.html">Generacion de Documentos Masivos</a>
+									<a class="nav-sub-link" href="documentosmasivos.php">Generacion de Documentos Masivos</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="documentospersonalizados.html">Generacion de Documentos Personalizados</a>
+									<a class="nav-sub-link" href="documentospersonalizados.php">Generacion de Documentos Personalizados</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="contratoindividual.html">Generacion de Contrato Individual</a>
+									<a class="nav-sub-link" href="contratoindividual.php">Generacion de Contrato Individual</a>
 								</li>
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="finiquitoindividual.html">Generacion de Finiquitos Individual</a>
+									<a class="nav-sub-link" href="finiquitoindividual.php">Generacion de Finiquitos Individual</a>
 								</li>
 							</ul>
 						</li>
@@ -183,7 +182,7 @@
 							<a class="nav-link with-sub" href="#"><i class="fe fe-box sidemenu-icon"></i><span class="sidemenu-label">Gestion de Usuarios</span><i class="angle fe fe-chevron-right"></i></a>
 							<ul class="nav-sub">
 								<li class="nav-sub-item">
-									<a class="nav-sub-link" href="usuarios.html">Registrar Usuarios</a>
+									<a class="nav-sub-link" href="usuarios.php">Registrar Usuarios</a>
 								</li>
 								
 							</ul>
@@ -201,20 +200,8 @@
 					</div>
 					<div class="main-header-center">
 						<div class="responsive-logo">
-							<a href="index.html"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
-							<a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
-						</div>
-						<div class="input-group">
-							<div class="mt-0">
-								<form class="form-inline">
-									<div class="search-element">
-										<input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" tabindex="1">
-										<button class="btn" type="submit">
-											<i class="fa fa-search"></i>
-										</button>
-									</div>
-								</form>
-							</div>
+							<a href="index.php"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
+							<a href="index.php"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
 						</div>
 					</div>
 					<div class="main-header-right">
@@ -222,61 +209,6 @@
 							<a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
 								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></i>
 							</a>
-						</div>
-						<div class="dropdown main-header-notification">
-							<a class="nav-link icon" href="">
-								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z"/></svg></i>
-								<span class="badge badge-danger nav-link-badge">4</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow  animated p-0">
-								<div class="notifications-menu">
-									<a class="dropdown-item d-flex p-3 border-bottom rounded-top " href="#">
-										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-primary brround">
-											<i class="fe fe-upload"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> New file Uploaded </span>
-											<div class="small text-muted d-flex">
-												5 hour ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md  fs-20 mr-3 align-self-center cover-image bg-teal brround">
-											<i class="fe fe-arrow-up-circle"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> Account Updated</span>
-											<div class="small text-muted d-flex">
-												20 mins ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md fs-20 mr-3 align-self-center cover-image bg-info brround">
-											<i class="fe fe-shopping-bag"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> Order's Recevied</span>
-											<div class="small text-muted d-flex">
-												1 hour ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-pink brround">
-											<i class="fe fe-database"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark">Server Rebooted</span>
-											<div class="small text-muted d-flex">
-												2 hour ago
-											</div>
-										</div>
-									</a>
-								</div>
-								<a href="#" class="dropdown-item text-center notifications-menu1">View all Notification</a>
-							</div>
 						</div>
 						<div class="dropdown d-md-flex">
 							<a class="nav-link icon full-screen-link fullscreen-button" href="">
@@ -293,13 +225,13 @@
 									<h6 class="main-notification-title">Alexandra Churchill</h6>
 									<p class="main-notification-text">Web Designer</p>
 								</div>
-								<a class="dropdown-item border-top" href="profile.html">
+								<a class="dropdown-item border-top" href="profile.php">
 									<i class="fe fe-user"></i> Mi Perfil
 								</a>
-								<a class="dropdown-item" href="lockscreen.html">
+								<a class="dropdown-item" href="lockscreen.php">
 									<i class="fe fe fe-unlock"></i> Lock screen
 								</a>
-								<a class="dropdown-item" href="signin.html">
+								<a class="dropdown-item" href="signin.php">
 									<i class="fe fe-power"></i> Cerrar Sesíon
 								</a>
 							</div>
@@ -408,19 +340,19 @@
 										<h6 class="main-notification-title">Alexandra Churchill</h6>
 										<p class="main-notification-text">Web Designer</p>
 									</div>
-									<a class="dropdown-item border-top" href="profile.html">
+									<a class="dropdown-item border-top" href="profile.php">
 										<i class="fe fe-user"></i> My Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-edit"></i> Edit Profile
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe-settings"></i> Account Settings
 									</a>
-									<a class="dropdown-item" href="profile.html">
+									<a class="dropdown-item" href="profile.php">
 										<i class="fe fe fe-unlock"></i> Lock screen
 									</a>
-									<a class="dropdown-item" href="signin.html">
+									<a class="dropdown-item" href="signin.php">
 										<i class="fe fe-power"></i> Sign Out
 									</a>
 								</div>
@@ -445,14 +377,88 @@
 						<!-- Page Header -->
 						<div class="page-header">
 							<div class="page-header-1">
-								<h1 class="main-content-title tx-30">Bitcoin</h1>
+								<h1 class="main-content-title tx-30">AFP</h1>
 								<ol class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 								</ol>
 							</div>
 						</div>
 						<!-- End Page Header -->
-
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card orverflow-hidden">
+									<div class="card-body">
+										<div>
+											<h6 class="main-content-label mb-1">Registro de AFP</h6>
+											<p class="text-mutted card-sub-title"></p>
+										</div>
+										<form action="" class="needs-validation was-validated">
+											<div class="row">
+												<div class="col-lg-6">
+													<div class="form-group has-success mg-b-0">
+														<label>Codigo</label>
+														<input class="form-control" placeholder="Codigo" required="" type="text" value="">
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="form-group has-success mg-b-0">
+														<label>Codigo (PREVIRED)</label>
+														<input class="form-control" placeholder="Codigo (PREVIRED)" required="" type="text" value="">
+													</div>
+												</div>
+												<div class="col-lg-6">
+													<div class="form-group has-success mg-b-0">
+														<label>Nombre AFP</label>
+														<input class="form-control" placeholder="Nombre AFP" required="" type="text" value="">
+													</div>
+												</div>
+												<div class="col-lg-6 mg-t-20 mg-lg-t-0">
+													<div class="form-group has-danger mg-b-0">
+														<label>Tasa Descuento</label>
+														<input class="form-control" placeholder="Tasa de Descuento" required="" type="number" min="0">
+													</div>
+												</div>
+												<div class="col-md-12 mt-3 text-right">
+													<button type="reset" class="btn btn-warning btn-md"> <i class="fa fa-refresh"></i> Restablecer</button>
+													<button type="submit" class="btn btn-primary btn-md"> <i class="fa fa-save"></i> Registrar</button>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ROW-4 opened -->
+						<div class="row">
+							<div class="col-xl-12 col-lg-12 col-md-12">
+								<div class="card transcation-crypto" id="transcation-crypto">
+									<div class="card-header bd-b-0">
+										<h4 class="card-title font-weight-semibold mb-0">Listado AFP</h4>
+									</div>
+									<div class="card-body p-0">
+										<div class="">
+											<div class="table-responsive">
+												<table class="table text-nowrap" id="example1">
+													<thead class="border-top">
+														<tr>
+															<th class="bg-transparent">Codigo</th>
+															<th class="bg-transparent">Codigo (PREVIRED)</th>
+															<th class="bg-transparent">AFP</th>
+															<th class="bg-transparent">Descuento</th>
+															<th class="bg-transparent text-center">Accion</th>
+														</tr>
+													</thead>
+													<tbody>
+														
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- ROW-4 END -->
 
 					</div>
 				</div>

@@ -459,7 +459,15 @@ $c = new Controller();
 						<!-- End Page Header -->
 						
 						<div class="row">
-							<div class="col-md-12">
+							<div class="col-md-6">
+								<label>CODIGO</label>
+								<input class="form-control" id="Nombre" placeholder="Nombre Mutuales de Seguridad"/>
+							</div>
+							<div class="col-md-6">
+								<label>CODIGO (PREVIRED)</label>
+								<input class="form-control" id="Nombre" placeholder="Nombre Mutuales de Seguridad"/>
+							</div>
+							<div class="col-md-6">
 								<label>Nombre</label>
 								<input class="form-control" id="Nombre" placeholder="Nombre Mutuales de Seguridad"/>
 							</div>
@@ -481,6 +489,8 @@ $c = new Controller();
 											<table class="table text-nowrap" id="example1">
 												<thead class="border-top">
 													<tr>
+														<th class="bg-transparent">Codigo</th>
+														<th class="bg-transparent">Codigo (PREVIRED)</th>
 														<th class="bg-transparent">Mutual de Seguridad</th>
 														<th class="bg-transparent text-center">Accion</th>
 													</tr>

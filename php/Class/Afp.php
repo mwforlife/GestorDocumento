@@ -2,12 +2,16 @@
 class AFP
 {
     private $id;
+    private $codigo;
+    private $codigoPrevired;
     private $nombre;
     private $descuento;
 
-    public function AFP($id, $nombre, $descuento)
+    public function AFP($id, $codigo, $codigoPrevired, $nombre, $descuento)
     {
         $this->id = $id;
+        $this->codigo = $codigo;
+        $this->codigoPrevired = $codigoPrevired;
         $this->nombre = $nombre;
         $this->descuento = $descuento;
     }
@@ -15,6 +19,16 @@ class AFP
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    public function getCodigoPrevired()
+    {
+        return $this->codigoPrevired;
     }
 
     public function getNombre()
@@ -30,6 +44,16 @@ class AFP
     public function setId($id)
     {
         $this->id = $id;
+    }
+
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
+    }
+
+    public function setCodigoPrevired($codigoPrevired)
+    {
+        $this->codigoPrevired = $codigoPrevired;
     }
 
     public function setNombre($nombre)

@@ -1,10 +1,14 @@
 <?php
 class Mutuales{
     private $id;
+    private $codigo;
+    private $codigoPrevired;
     private $nombre;
 
-    public function Mutuales($id, $nombre){
+    public function Mutuales($id, $codigo, $codigoPrevired, $nombre){
         $this->id = $id;
+        $this->codigo = $codigo;
+        $this->codigoPrevired = $codigoPrevired;
         $this->nombre = $nombre;
     }
 
@@ -12,12 +16,28 @@ class Mutuales{
         return $this->id;
     }
 
-    public function getNombre(){
-        return $this->nombre;
-    }
-
     public function setId($id){
         $this->id = $id;
+    }
+
+    public function getCodigo(){
+        return $this->codigo;
+    }
+
+    public function setCodigo($codigo){
+        $this->codigo = $codigo;
+    }
+
+    public function getCodigoPrevired(){
+        return $this->codigoPrevired;
+    }
+
+    public function setCodigoPrevired($codigoPrevired){
+        $this->codigoPrevired = $codigoPrevired;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
     }
 
     public function setNombre($nombre){

@@ -40,12 +40,14 @@ function Editar(id){
 
 function actualizarregion(id){
     $(".global-loader").hide();
+    var codigo = $("#codigo").val();
+    var codigoPrevired = $("#codigoPrevired").val();
     var nombre = $("#nombre").val();
 
     $.ajax({
         type: "POST",
         url: "php/update/regiones.php",
-        data: {id: id, nombre: nombre},
+        data: {id: id, codigo: codigo, codigoPrevired: codigoPrevired, nombre: nombre},
         success: function(data){
             if(data == 1 || data == "1"){
                 $(".global-loader").hide();
@@ -99,6 +101,3 @@ function Eliminar(id){
 
 }
 
-window.onload = function(){
-    $("#RegionName").focus();
-}

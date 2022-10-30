@@ -1,12 +1,12 @@
-$(document).ready(function () {
-    $("#ComunaForm").on("submit", function(e){
+$(document).ready(function(){
+    $("#RegionForm").on("submit", function(e){
         e.preventDefault();
         $(".global-loader").show();
         var form = $(this);
         var data = form.serialize();
         $.ajax({
             type: "POST",
-            url: "php/insert/comunas.php",
+            url: "php/insert/regiones.php",
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
@@ -25,12 +25,11 @@ $(document).ready(function () {
     );
 });
 
-
 function Editar(id){
     $(".global-loader").show();
     $.ajax({
         type: "POST",
-        url: "php/cargaredit/comunas.php",
+        url: "php/cargaredit/regiones.php",
         data: {id: id},
         success: function(data){
             $(".global-loader").hide();
@@ -39,13 +38,16 @@ function Editar(id){
     });
 }
 
-function actualizarcomuna(id){
+function actualizarregion(id){
     $(".global-loader").hide();
+    var codigo = $("#codigo").val();
+    var codigoPrevired = $("#codigoPrevired").val();
     var nombre = $("#nombre").val();
+
     $.ajax({
         type: "POST",
-        url: "php/update/comunas.php",
-        data: {id: id, nombre: nombre},
+        url: "php/update/regiones.php",
+        data: {id: id, codigo: codigo, codigoPrevired: codigoPrevired, nombre: nombre},
         success: function(data){
             if(data == 1 || data == "1"){
                 $(".global-loader").hide();
@@ -76,11 +78,11 @@ function Eliminar(id){
         if (result.value) {
             $.ajax({
                 type: "POST",
-                url: "php/eliminar/comunas.php",
+                url: "php/eliminar/regiones.php",
                 data: {id: id},
                 success: function(data){
+                    $(".global-loader").hide();
                     if(data == 1 || data == "1"){
-                        $(".global-loader").hide();
                         ToastifySuccess("Registro eliminado correctamente");
                         setTimeout(function(){
                             location.reload();

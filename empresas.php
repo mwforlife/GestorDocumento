@@ -65,7 +65,7 @@ $c = new Controller();
 		<!-- Sidemenu -->
 		<div class="main-sidebar main-sidebar-sticky side-menu">
 			<div class="sidemenu-logo">
-				<a class="main-logo" href="index.html">
+				<a class="main-logo" href="index.php">
 					<img src="assets/img/brand/logo.png" class="header-brand-img desktop-logo" alt="logo">
 					<img src="assets/img/brand/icon.png" class="header-brand-img icon-logo" alt="logo">
 					<img src="assets/img/brand/dark-logo.png" class="header-brand-img desktop-logo theme-logo" alt="logo">
@@ -79,64 +79,64 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-home sidemenu-icon"></i><span class="sidemenu-label">Definicion de Datos</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="isapres.html">ISAPRES</a>
+								<a class="nav-sub-link" href="isapres.php">ISAPRES</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="afp.html">AFP</a>
+								<a class="nav-sub-link" href="afp.php">AFP</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="regiones.html">REGIONES</a>
+								<a class="nav-sub-link" href="regiones.php">REGIONES</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="comunas.html">COMUNAS</a>
+								<a class="nav-sub-link" href="comunas.php">COMUNAS</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="ciudades.html">CIUDADES</a>
+								<a class="nav-sub-link" href="ciudades.php">CIUDADES</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="jornadas.html">JORNADAS</a>
+								<a class="nav-sub-link" href="jornadas.php">JORNADAS</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="tiposueldo.html">TIPO SUELDO BASE</a>
+								<a class="nav-sub-link" href="tiposueldo.php">TIPO SUELDO BASE</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="cargos.html">CARGOS</a>
+								<a class="nav-sub-link" href="cargos.php">CARGOS</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="cajacompensacion.html">CAJAS DE COMPENSACIÓN</a>
+								<a class="nav-sub-link" href="cajacompensacion.php">CAJAS DE COMPENSACIÓN</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="mutuales.html">MUTUALES DE SEGURIDAD</a>
+								<a class="nav-sub-link" href="mutuales.php">MUTUALES DE SEGURIDAD</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="asignacionfamiliar.html">TRAMOS ASIGNACION FAMILIAR</a>
+								<a class="nav-sub-link" href="asignacionfamiliar.php">TRAMOS ASIGNACION FAMILIAR</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="tipocontrato.html">TIPO CONTRATO LABORAL</a>
+								<a class="nav-sub-link" href="tipocontrato.php">TIPO CONTRATO LABORAL</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="causaltermino.html">CAUSAL TERMINO CONTRATO</a>
+								<a class="nav-sub-link" href="causaltermino.php">CAUSAL TERMINO CONTRATO</a>
 							</li>
 						</ul>
 					</li>
 					<li class="nav-header"><span class="nav-label">FUNCIONES</span></li>
 					<li class="nav-item">
-						<a class="nav-link" href="tipodocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
+						<a class="nav-link" href="tipodocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">TIPO DE DOCUMENTOS</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="redactardocumento.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
+						<a class="nav-link" href="redactardocumento.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">REDACTAR DOCUMENTOS</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="asociardocumentos.html"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
+						<a class="nav-link" href="asociardocumentos.php"><i class="fe fe-grid sidemenu-icon"></i><span class="sidemenu-label">ASOCIAR DOCUMENTOS A EMPRESAS</span></a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link with-sub" href="#"><i class="fe fe-message-square sidemenu-icon"></i><span class="sidemenu-label">Empresas</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="empresas.html">Registro de Empresas</a>
+								<a class="nav-sub-link" href="empresas.php">Registro de Empresas</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="centrocosto.html">Registro de Centro de Costo</a>
+								<a class="nav-sub-link" href="centrocosto.php">Registro de Centro de Costo</a>
 							</li>
 						</ul>
 					</li>
@@ -144,10 +144,10 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-droplet sidemenu-icon"></i><span class="sidemenu-label">Auditoria</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="auditoriatrabajadores.html">Auditoria de trabajadores</a>
+								<a class="nav-sub-link" href="auditoriatrabajadores.php">Auditoria de trabajadores</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="auditoriaeventos.html">Auditoria de eventos</a>
+								<a class="nav-sub-link" href="auditoriaeventos.php">Auditoria de eventos</a>
 							</li>
 
 						</ul>
@@ -156,16 +156,16 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-map-pin sidemenu-icon"></i><span class="sidemenu-label">Trabajadores</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="trabajadores.html">Registro de trabajadores</a>
+								<a class="nav-sub-link" href="trabajadores.php">Registro de trabajadores</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="documentoficha.html">Registro de documento a Ficha trabajador</a>
+								<a class="nav-sub-link" href="documentoficha.php">Registro de documento a Ficha trabajador</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="anotaciones.html">Registro de Anotaciones</a>
+								<a class="nav-sub-link" href="anotaciones.php">Registro de Anotaciones</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="historialtrabajador.html">Historial de trabajadores</a>
+								<a class="nav-sub-link" href="historialtrabajador.php">Historial de trabajadores</a>
 							</li>
 						</ul>
 					</li>
@@ -173,16 +173,16 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-layout sidemenu-icon"></i><span class="sidemenu-label">Documentos</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="documentosmasivos.html">Generacion de Documentos Masivos</a>
+								<a class="nav-sub-link" href="documentosmasivos.php">Generacion de Documentos Masivos</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="documentospersonalizados.html">Generacion de Documentos Personalizados</a>
+								<a class="nav-sub-link" href="documentospersonalizados.php">Generacion de Documentos Personalizados</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="contratoindividual.html">Generacion de Contrato Individual</a>
+								<a class="nav-sub-link" href="contratoindividual.php">Generacion de Contrato Individual</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="finiquitoindividual.html">Generacion de Finiquitos Individual</a>
+								<a class="nav-sub-link" href="finiquitoindividual.php">Generacion de Finiquitos Individual</a>
 							</li>
 						</ul>
 					</li>
@@ -190,7 +190,7 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-box sidemenu-icon"></i><span class="sidemenu-label">Gestion de Usuarios</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="usuarios.html">Registrar Usuarios</a>
+								<a class="nav-sub-link" href="usuarios.php">Registrar Usuarios</a>
 							</li>
 
 						</ul>
@@ -208,8 +208,8 @@ $c = new Controller();
 				</div>
 				<div class="main-header-center">
 					<div class="responsive-logo">
-						<a href="index.html"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
-						<a href="index.html"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
+						<a href="index.php"><img src="assets/img/brand/dark-logo.png" class="mobile-logo" alt="logo"></a>
+						<a href="index.php"><img src="assets/img/brand/logo.png" class="mobile-logo-dark" alt="logo"></a>
 					</div>
 					<div class="input-group">
 						<div class="mt-0">
@@ -312,13 +312,13 @@ $c = new Controller();
 								<h6 class="main-notification-title">Alexandra Churchill</h6>
 								<p class="main-notification-text">Web Designer</p>
 							</div>
-							<a class="dropdown-item border-top" href="profile.html">
+							<a class="dropdown-item border-top" href="profile.php">
 								<i class="fe fe-user"></i> Mi Perfil
 							</a>
-							<a class="dropdown-item" href="lockscreen.html">
+							<a class="dropdown-item" href="lockscreen.php">
 								<i class="fe fe fe-unlock"></i> Lock screen
 							</a>
-							<a class="dropdown-item" href="signin.html">
+							<a class="dropdown-item" href="signin.php">
 								<i class="fe fe-power"></i> Cerrar Sesíon
 							</a>
 						</div>
@@ -438,19 +438,19 @@ $c = new Controller();
 									<h6 class="main-notification-title">Alexandra Churchill</h6>
 									<p class="main-notification-text">Web Designer</p>
 								</div>
-								<a class="dropdown-item border-top" href="profile.html">
+								<a class="dropdown-item border-top" href="profile.php">
 									<i class="fe fe-user"></i> My Profile
 								</a>
-								<a class="dropdown-item" href="profile.html">
+								<a class="dropdown-item" href="profile.php">
 									<i class="fe fe-edit"></i> Edit Profile
 								</a>
-								<a class="dropdown-item" href="profile.html">
+								<a class="dropdown-item" href="profile.php">
 									<i class="fe fe-settings"></i> Account Settings
 								</a>
-								<a class="dropdown-item" href="profile.html">
+								<a class="dropdown-item" href="profile.php">
 									<i class="fe fe fe-unlock"></i> Lock screen
 								</a>
-								<a class="dropdown-item" href="signin.html">
+								<a class="dropdown-item" href="signin.php">
 									<i class="fe fe-power"></i> Sign Out
 								</a>
 							</div>
@@ -486,7 +486,7 @@ $c = new Controller();
 					</div>
 					<div class="row">
 						<div class="col-md-12 text-right mb-2">
-							<a href="registrarempresa.html" class="btn btn-md btn-success">Nueva Empresa <i class="fa fa-arrow-right"></i> </a>
+							<a href="registrarempresa.php" class="btn btn-md btn-success">Nueva Empresa <i class="fa fa-arrow-right"></i> </a>
 						</div>
 					</div>
 					<!-- ROW- opened -->
