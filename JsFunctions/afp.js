@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    $("#RegionForm").on("submit", function(e){
+    $("#RegisForm").on("submit", function(e){
         e.preventDefault();
         $(".global-loader").show();
         var form = $(this);
         var data = form.serialize();
         $.ajax({
             type: "POST",
-            url: "php/insert/regiones.php",
+            url: "php/insert/afp.php",
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
@@ -29,7 +29,7 @@ function Editar(id){
     $(".global-loader").show();
     $.ajax({
         type: "POST",
-        url: "php/cargaredit/regiones.php",
+        url: "php/cargaredit/afp.php",
         data: {id: id},
         success: function(data){
             $(".global-loader").hide();
@@ -38,16 +38,17 @@ function Editar(id){
     });
 }
 
-function actualizarregion(id){
+function Actualizar(id){
     $(".global-loader").hide();
     var codigo = $("#codigo").val();
     var codigoPrevired = $("#codigoPrevired").val();
     var nombre = $("#nombre").val();
+    var tasa = $("#tasa").val();
 
     $.ajax({
         type: "POST",
-        url: "php/update/regiones.php",
-        data: {id: id, codigo: codigo, codigoPrevired: codigoPrevired, nombre: nombre},
+        url: "php/update/afp.php",
+        data: {id: id, codigo: codigo, codigoPrevired: codigoPrevired, nombre: nombre, tasa: tasa},
         success: function(data){
             if(data == 1 || data == "1"){
                 $(".global-loader").hide();
@@ -78,7 +79,7 @@ function Eliminar(id){
         if (result.value) {
             $.ajax({
                 type: "POST",
-                url: "php/eliminar/regiones.php",
+                url: "php/eliminar/afp.php",
                 data: {id: id},
                 success: function(data){
                     $(".global-loader").hide();

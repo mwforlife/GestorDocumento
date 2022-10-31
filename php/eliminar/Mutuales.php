@@ -1,13 +1,12 @@
 <?php
 require '../controller.php';
 $c = new Controller();
+$id = $_POST['id'];
 
-if (isset($_POST['id'])) {
-    $id = $_POST['id'];
-    $value = $c->eliminarMutual($id);
-    if($value == true){
-        echo 1;
-    }else{
-        echo 0;
-    }
+$result = $c->eliminarmutual($id);
+
+if($result == true){
+    echo 1;
+}else{
+    echo 0;
 }

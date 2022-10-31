@@ -38,7 +38,7 @@ function Editar(id){
     });
 }
 
-function actualizar(id){
+function Actualizar(id){
     $(".global-loader").hide();
     var codigo = $("#codigo").val();
     var codigoPrevired = $("#codigoPrevired").val();

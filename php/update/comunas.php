@@ -2,12 +2,16 @@
 require '../controller.php';
 $c = new Controller();
 $id = $_POST['id'];
+$codigo = $_POST['codigo'];
+$codigoPrevired = $_POST['codigoPrevired'];
 $nombre = $_POST['nombre'];
 $nombre = $c->escapeString($nombre);
-$result = $c->actualizarcomuna($id, $nombre);
+
+$result = $c->actualizarcomuna($id, $codigo, $codigoPrevired, $nombre);
+
 if($result == true){
-    $c->actualizarciudad($id, $nombre);
     echo 1;
+    $c->actualizarciudad($id, $codigo, $codigoPrevired, $nombre);
 }else{
     echo 0;
 }

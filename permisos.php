@@ -524,9 +524,6 @@ if (isset($_GET['code'])) {
                                                     </table>
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 text-right mt-2">
-                                                <a href="usuarios.php" class="btn btn-danger btn-sm"><i class="fa fa-arrow-left">Volver</i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -574,6 +571,9 @@ if (isset($_GET['code'])) {
                                                         </tbody>
                                                     </table>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-12 text-right mt-2">
+                                                <a href="usuarios.php" class="btn btn-danger btn-md"><i class="fa fa-arrow-left">Volver</i></a>
                                             </div>
                                     </div>
                                 </div>

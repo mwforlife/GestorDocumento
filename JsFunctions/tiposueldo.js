@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    $("#RegionForm").on("submit", function(e){
+    $("#RegisForm").on("submit", function(e){
         e.preventDefault();
         $(".global-loader").show();
         var form = $(this);
         var data = form.serialize();
         $.ajax({
             type: "POST",
-            url: "php/insert/regiones.php",
+            url: "php/insert/tiposueldo.php",
             data: data,
             success: function(data){
                 if(data == 1 || data == "1"){
@@ -29,7 +29,7 @@ function Editar(id){
     $(".global-loader").show();
     $.ajax({
         type: "POST",
-        url: "php/cargaredit/regiones.php",
+        url: "php/cargaredit/tiposueldo.php",
         data: {id: id},
         success: function(data){
             $(".global-loader").hide();
@@ -38,7 +38,7 @@ function Editar(id){
     });
 }
 
-function actualizarregion(id){
+function Actualizar(id){
     $(".global-loader").hide();
     var codigo = $("#codigo").val();
     var codigoPrevired = $("#codigoPrevired").val();
@@ -46,7 +46,7 @@ function actualizarregion(id){
 
     $.ajax({
         type: "POST",
-        url: "php/update/regiones.php",
+        url: "php/update/tiposueldo.php",
         data: {id: id, codigo: codigo, codigoPrevired: codigoPrevired, nombre: nombre},
         success: function(data){
             if(data == 1 || data == "1"){
@@ -78,7 +78,7 @@ function Eliminar(id){
         if (result.value) {
             $.ajax({
                 type: "POST",
-                url: "php/eliminar/regiones.php",
+                url: "php/eliminar/tiposueldo.php",
                 data: {id: id},
                 success: function(data){
                     $(".global-loader").hide();

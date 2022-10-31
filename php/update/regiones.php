@@ -2,10 +2,12 @@
 require '../controller.php';
 $c = new Controller();
 $id = $_POST['id'];
+$codigo = $_POST['codigo'];
+$codigoPrevired = $_POST['codigoPrevired'];
 $nombre = $_POST['nombre'];
 $nombre = $c->escapeString($nombre);
 
-$result = $c->actualizarregion($id, $nombre);
+$result = $c->actualizarregion($id, $codigo, $codigoPrevired, $nombre);
 
 if($result == true){
     echo 1;

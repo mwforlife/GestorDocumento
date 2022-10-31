@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $("#RegionForm").on("submit", function(e){
+    $("#RegisForm").on("submit", function(e){
         e.preventDefault();
         $(".global-loader").show();
         var form = $(this);
@@ -38,7 +38,7 @@ function Editar(id){
     });
 }
 
-function actualizarregion(id){
+function Actualizar(id){
     $(".global-loader").hide();
     var codigo = $("#codigo").val();
     var codigoPrevired = $("#codigoPrevired").val();
@@ -100,4 +100,3 @@ function Eliminar(id){
     });
 
 }
-

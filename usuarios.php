@@ -498,12 +498,13 @@ $c = new Controller();
                                 <div class="table-responsive">
                                     <table class="table text-nowrap" id="example1">
                                         <thead class="border-top">
-                                            <tr>
+                                            <tr class="text-center">
                                                 <th class="bg-transparent">RUT</th>
                                                 <th class="bg-transparent">Nombre</th>
                                                 <th class="bg-transparent">Correo</th>
                                                 <th class="bg-transparent">Telefono</th>
                                                 <th class="bg-transparent">Permisos</th>
+                                                <th class="bg-transparend">Resetear Contraseña</th>
                                                 <th class="bg-transparent text-center">Accion</th>
                                             </tr>
                                         </thead>
@@ -529,6 +530,11 @@ $c = new Controller();
                                                         }else{
                                                             echo "<td class='text-muted fs-15 font-weight-semibold'>Sin Permisos</td>";
                                                         }
+                                                        echo "<td class='text-muted fs-15 font-weight-semibold text-center'><a title='Resetear Contraseña' class='btn btn-outline-info btn-sm rounded-11' onclick='cargarid(".$u->getId().")' data-toggle='modal' data-target='#modalcontra' data-original-title='Cambiar Contraseña'>
+                                                                    <i class='fa fa-key'>
+                                                                    </i>
+                                                                    </a>
+                                                                </td>";
                                                         echo "<td class='text-center'>
                                                             <a class='btn btn-outline-info btn-sm rounded-11' onclick='more(".$u->getId().")' data-toggle='modal' data-target='#modaluser' data-original-title='Ver Más'>
                                                                 <i class='fa fa-eye'>
@@ -536,10 +542,7 @@ $c = new Controller();
                                                             </a>
                                                             <a class='btn btn-outline-warning btn-sm rounded-11' href='permisos.php?code=".$u->getId()."' data-toggle='tooltip' data-original-title='Permisos'><i class='fa fa-user-plus'></i></a>
                                                             <a class='btn btn-outline-warning btn-sm rounded-11' data-toggle='tooltip' href='EditarUsuario.php?code=".$u->getId()."' data-original-title='Editar'><i class='fa fa-pen'></i></a>
-                                                            <a title='Resetear Contraseña' class='btn btn-outline-info btn-sm rounded-11' onclick='cargarid(".$u->getId().")' data-toggle='modal' data-target='#modalcontra' data-original-title='Cambiar Contraseña'>
-                                                                <i class='fa fa-key'>
-                                                                </i>
-                                                            </a>
+                                                            
                                                             <a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(".$u->getId().")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
 
                                                         </td>

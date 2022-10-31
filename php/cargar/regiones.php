@@ -5,5 +5,5 @@ $c = new Controller();
 $lista = $c->listarregiones();
 
 foreach ($lista as $region) {
-    echo "<option value='" . $region->getId() . "'>" . $region->getNombre() . "</option>";
+    echo "<option value='" . $region->getId() . "'>" .$region->getCodigo." - ". $region->getNombre() . "</option>";
 }

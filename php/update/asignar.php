@@ -25,6 +25,12 @@ if($id == 0){
     if($valid == false){
         $c->asignarPermisos($usuario, 4);
     }
+
+    $valid = $c->validarPermiso($usuario,5);
+    if($valid == false){
+        $c->asignarPermisos($usuario, 5);
+    }
+    
     echo 1;
 }else{
     $result = $c->asignarPermisos($usuario, $id);

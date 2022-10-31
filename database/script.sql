@@ -178,12 +178,21 @@ create table users (
     updated_at timestamp not null default current_timestamp on update current_timestamp
 );
 
+create table sesionusuario (
+    id int not null auto_increment primary key,
+    id_usu int not null references users(id_usu),
+    token varchar(200) not null,
+    created_at timestamp not null default current_timestamp,
+    updated_at timestamp not null default current_timestamp on update current_timestamp
+);
+
 create table permisos(
     id int not null auto_increment primary key,
     nombre varchar(50) not null,
     descripcion varchar(200) not null
 );
 
+insert into permisos(nombre,descripcion) values('Gestión','Permite Gestion las definiciones de sistema');
 insert into permisos(nombre,descripcion) values('Lectura','Permite leer los datos');
 insert into permisos(nombre,descripcion) values('Escritura','Permite escribir los datos');
 insert into permisos(nombre,descripcion) values('Actualizacion','Permite actualizar los datos');

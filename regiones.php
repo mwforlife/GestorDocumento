@@ -78,7 +78,7 @@ $c = new Controller();
 						<a class="nav-link with-sub" href="#"><i class="fe fe-home sidemenu-icon"></i><span class="sidemenu-label">Definicion de Datos</span><i class="angle fe fe-chevron-right"></i></a>
 						<ul class="nav-sub">
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="isapres.php">ISAPRES</a>
+								<a class="nav-sub-link" href="isapres.php">Institución de Salud</a>
 							</li>
 							<li class="nav-sub-item">
 								<a class="nav-sub-link" href="afp.php">AFP</a>
@@ -90,7 +90,7 @@ $c = new Controller();
 								<a class="nav-sub-link" href="comunas.php">COMUNAS</a>
 							</li>
 							<li class="nav-sub-item">
-								<a class="nav-sub-link" href="ciudades.php">CIUDADES</a>
+								<a class="nav-sub-link" href="nacionalidad.php">NACIONALIDADES</a>
 							</li>
 							<li class="nav-sub-item">
 								<a class="nav-sub-link" href="jornadas.php">JORNADAS</a>
@@ -224,72 +224,6 @@ $c = new Controller();
 					</div>
 				</div>
 				<div class="main-header-right">
-					<div class="dropdown d-md-flex header-settings">
-						<a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
-							<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-									<path d="M0 0h24v24H0V0z" fill="none" />
-									<path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
-								</svg></i>
-						</a>
-					</div>
-					<div class="dropdown main-header-notification">
-						<a class="nav-link icon" href="">
-							<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-									<path d="M0 0h24v24H0V0z" fill="none" />
-									<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
-								</svg></i>
-							<span class="badge badge-danger nav-link-badge">4</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow  animated p-0">
-							<div class="notifications-menu">
-								<a class="dropdown-item d-flex p-3 border-bottom rounded-top " href="#">
-									<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-primary brround">
-										<i class="fe fe-upload"></i>
-									</span>
-									<div>
-										<span class="font-weight-bold text-dark"> New file Uploaded </span>
-										<div class="small text-muted d-flex">
-											5 hour ago
-										</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-									<span class="avatar avatar-md  fs-20 mr-3 align-self-center cover-image bg-teal brround">
-										<i class="fe fe-arrow-up-circle"></i>
-									</span>
-									<div>
-										<span class="font-weight-bold text-dark"> Account Updated</span>
-										<div class="small text-muted d-flex">
-											20 mins ago
-										</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-									<span class="avatar avatar-md fs-20 mr-3 align-self-center cover-image bg-info brround">
-										<i class="fe fe-shopping-bag"></i>
-									</span>
-									<div>
-										<span class="font-weight-bold text-dark"> Order's Recevied</span>
-										<div class="small text-muted d-flex">
-											1 hour ago
-										</div>
-									</div>
-								</a>
-								<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-									<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-pink brround">
-										<i class="fe fe-database"></i>
-									</span>
-									<div>
-										<span class="font-weight-bold text-dark">Server Rebooted</span>
-										<div class="small text-muted d-flex">
-											2 hour ago
-										</div>
-									</div>
-								</a>
-							</div>
-							<a href="#" class="dropdown-item text-center notifications-menu1">View all Notification</a>
-						</div>
-					</div>
 					<div class="dropdown d-md-flex">
 						<a class="nav-link icon full-screen-link fullscreen-button" href="">
 							<i class="fullscreen"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
@@ -304,20 +238,15 @@ $c = new Controller();
 					</div>
 					<div class="dropdown main-profile-menu">
 						<a class="d-flex" href="">
-							<span class="main-img-user"><img alt="avatar" src=""></span>
+							<span class="main-img-user"><img alt="avatar" src="../../assets/img/users/9.jpg"></span>
 						</a>
 						<div class="dropdown-menu">
 							<div class="header-navheading">
-								<h6 class="main-notification-title">Alexandra Churchill</h6>
-								<p class="main-notification-text">Web Designer</p>
+								<h6 class="main-notification-title">
+									<?php //echo $_SESSION['NOMBRE_USUARIO'];
+									?></h6>
 							</div>
-							<a class="dropdown-item border-top" href="profile.php">
-								<i class="fe fe-user"></i> Mi Perfil
-							</a>
-							<a class="dropdown-item" href="lockscreen.php">
-								<i class="fe fe fe-unlock"></i> Lock screen
-							</a>
-							<a class="dropdown-item" href="signin.php">
+							<a class="dropdown-item" href="close.php">
 								<i class="fe fe-power"></i> Cerrar Sesíon
 							</a>
 						</div>
@@ -335,30 +264,6 @@ $c = new Controller();
 			<div class="mb-1 navbar navbar-expand-lg  nav nav-item  navbar-nav-right responsive-navbar navbar-dark  ">
 				<div class="collapse navbar-collapse" id="navbarSupportedContent-4">
 					<div class="d-flex order-lg-2 ml-auto">
-						<div class="dropdown header-search">
-							<a class="nav-link icon header-search">
-								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-										<path d="M0 0h24v24H0V0z" fill="none" />
-										<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
-									</svg></i>
-							</a>
-							<div class="dropdown-menu">
-								<div class="main-form-search p-2">
-									<div class="">
-										<div class="mt-0">
-											<form class="">
-												<div class="search-element d-flex">
-													<input type="search" class="form-control header-search" placeholder="Search…" aria-label="Search" tabindex="1">
-													<button class="btn" type="submit">
-														<i class="fa fa-search"></i>
-													</button>
-												</div>
-											</form>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
 						<div class="dropdown">
 							<a class="nav-link icon full-screen-link fullscreen-button" href=""><i class="fullscreen"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
 										<path d="M0 0h24v24H0V0z" fill="none" />
@@ -370,97 +275,19 @@ $c = new Controller();
 									</svg></i>
 							</a>
 						</div>
-						<div class="dropdown main-header-notification">
-							<a class="nav-link icon" href="">
-								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-										<path d="M0 0h24v24H0V0z" fill="none" />
-										<path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5v6z" />
-									</svg></i>
-								<span class="badge badge-danger nav-link-badge">4</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow  animated p-0">
-								<div class="notifications-menu">
-									<a class="dropdown-item d-flex p-3 border-bottom rounded-top" href="#">
-										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-primary brround">
-											<i class="fe fe-upload"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> New file Uploaded </span>
-											<div class="small text-muted d-flex">
-												5 hour ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md  fs-20 mr-3 align-self-center cover-image bg-teal brround">
-											<i class="fe fe-arrow-up-circle"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> Account Updated</span>
-											<div class="small text-muted d-flex">
-												20 mins ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md fs-20 mr-3 align-self-center cover-image bg-info brround">
-											<i class="fe fe-shopping-bag"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark"> Order's Recevied</span>
-											<div class="small text-muted d-flex">
-												1 hour ago
-											</div>
-										</div>
-									</a>
-									<a class="dropdown-item d-flex p-3 border-bottom" href="#">
-										<span class="avatar avatar-md mr-3 fs-20 align-self-center cover-image bg-pink brround">
-											<i class="fe fe-database"></i>
-										</span>
-										<div>
-											<span class="font-weight-bold text-dark">Server Rebooted</span>
-											<div class="small text-muted d-flex">
-												2 hour ago
-											</div>
-										</div>
-									</a>
-								</div>
-								<a href="#" class="dropdown-item text-center notifications-menu1">View all Notification</a>
-							</div>
-						</div>
 						<div class="dropdown main-profile-menu">
 							<a class="d-flex" href="#">
-								<span class="main-img-user"><img alt="avatar" src=""></span>
+								<span class="main-img-user"><img alt="avatar" src="../../assets/img/users/1.jpg"></span>
 							</a>
 							<div class="dropdown-menu">
 								<div class="header-navheading">
-									<h6 class="main-notification-title">Alexandra Churchill</h6>
-									<p class="main-notification-text">Web Designer</p>
+									<h6 class="main-notification-title"><?php //echo $_SESSION['NOMBRE_USUARIO']; ?></h6>
 								</div>
-								<a class="dropdown-item border-top" href="profile.php">
-									<i class="fe fe-user"></i> My Profile
-								</a>
-								<a class="dropdown-item" href="profile.php">
-									<i class="fe fe-edit"></i> Edit Profile
-								</a>
-								<a class="dropdown-item" href="profile.php">
-									<i class="fe fe-settings"></i> Account Settings
-								</a>
-								<a class="dropdown-item" href="profile.php">
-									<i class="fe fe fe-unlock"></i> Lock screen
-								</a>
-								<a class="dropdown-item" href="signin.php">
-									<i class="fe fe-power"></i> Sign Out
+								
+								<a class="dropdown-item" href="close.php">
+									<i class="fe fe-power"></i> Cerrar Sesión
 								</a>
 							</div>
-						</div>
-						<div class="dropdown  header-settings">
-							<a href="#" class="nav-link icon" data-toggle="sidebar-right" data-target=".sidebar-right">
-								<i class="header-icons"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-										<path d="M0 0h24v24H0V0z" fill="none" />
-										<path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z" />
-									</svg></i>
-							</a>
 						</div>
 					</div>
 				</div>
@@ -474,16 +301,16 @@ $c = new Controller();
 			<div class="container-fluid">
 				<div class="inner-body">
 
+
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="page-header-1">
-							<h1 class="main-content-title tx-30">Regiones</h1>
+							<h1 class="main-content-title tx-30">REGIONES</h1>
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
 							</ol>
 						</div>
 					</div>
-					<!-- End Page Header -->
 					<!-- End Page Header -->
 					<div class="row">
 						<div class="col-lg-12">
@@ -493,24 +320,24 @@ $c = new Controller();
 										<h6 class="main-content-label mb-1">Registro de Regiones</h6>
 										<p class="text-mutted card-sub-title"></p>
 									</div>
-									<form id="RegionForm" name="RegionForm" action="" class="needs-validation was-validated">
+									<form id="RegisForm" name="RegisForm" class="needs-validation was-validated">
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="form-group has-success mg-b-0">
 													<label>Codigo</label>
-													<input id="RegionCodigo" class="form-control" id="RegionCodigo" name="RegionName" placeholder="Codigo Region" required="" type="number" value="">
+													<input class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success mg-b-0">
 													<label>Codigo (PREVIRED)</label>
-													<input id="RegionCodigo" class="form-control" id="RegionCodigo" name="RegionName" placeholder="Codigo Region" required="" type="number" value="">
+													<input class="form-control" id="CodigoPrevired" name="CodigoPrevired" placeholder="Codigo (PREVIRED)" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<div class="form-group has-success mg-b-0">
 													<label>Nombre</label>
-													<input id="RegionName" class="form-control" id="RegionName" name="RegionName" placeholder="Nombre Region" required="" type="text" value="">
+													<input class="form-control" id="Nombre" name="Nombre" placeholder="Nombre Región" required="" type="text" value="">
 												</div>
 											</div>
 											<div class="col-md-12 mt-3 text-right">
@@ -528,36 +355,40 @@ $c = new Controller();
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="card transcation-crypto" id="transcation-crypto">
 								<div class="card-header bd-b-0">
-									<h4 class="card-title font-weight-semibold mb-0">Listado de Regiones</h4>
+									<h4 class="card-title font-weight-semibold mb-0">Listado Regiones</h4>
 								</div>
-								<div class="card-body ">
+								<div class="card-body">
 									<div class="">
 										<div class="table-responsive">
 											<table class="table text-nowrap" id="example1">
-												<thead class="border-top">
+												<thead class="border-top text-center">
 													<tr>
 														<th class="bg-transparent">Codigo</th>
 														<th class="bg-transparent">Codigo (PREVIRED)</th>
-														<th class="bg-transparent">Region</th>
+														<th class="bg-transparent">Región</th>
+														<th class="bg-transparent">Agregar Comuna</th>
 														<th class="bg-transparent text-center">Accion</th>
 													</tr>
 												</thead>
-												<tbody>
+												<tbody class="text-center">
 													<?php
-													/*$lista = $c->listarregiones();
+													$lista = $c->listarregiones();
 													if (count($lista) > 0) {
 														foreach ($lista as $object) {
-															echo "<tr>";
-															echo "<td>" . $object->getNombre() . "</td>";
-															echo "<td class='text-center'>
-																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")' data-original-title='Editar'><i class='fa fa-pen'></i></a>
-																<a class='btn btn-outline-info btn-sm rounded-11 ' data-toggle='tooltip' href='comunas.php?code=" . $object->getId() . "' data-original-title='Agregar Comunas'><i class='fa fa-edit'></i></a>
-																<a class='btn btn-outline-danger btn-sm rounded-11' data-toggle='tooltip' onclick='Eliminar(" . $object->getId() . ")' data-original-title='Eliminar'><i class='fa fa-trash'></i></a>
-															</td>";
-															echo "</tr>";
+															echo "<tr>
+																		<td>" . $object->getCodigo() . "</td>
+																		<td>" . $object->getCodigoPrevired() . "</td>
+																		<td>" . $object->getNombre() . "</td>
+																		<td class='text-center'>
+																			<a href='comunas.php?code=" . $object->getId() . "' class='btn btn-sm btn-success' ><i class='fa fa-user-plus'></i></a>
+																		</td>
+																		<td class='text-center'>
+																			<a href='javascript:void(0)' class='btn btn-sm btn-primary' data-toggle='modal' data-target='#modaledit' onclick='Editar(" . $object->getId() . ")'><i class='fa fa-edit'></i></a>
+																			<a href='javascript:void(0)' class='btn btn-sm btn-danger' onclick='Eliminar(" . $object->getId() . ")'><i class='fa fa-trash'></i></a>
+																		</td>
+																	</tr>";
 														}
-													}*/
-
+													}
 
 													?>
 												</tbody>
@@ -569,6 +400,7 @@ $c = new Controller();
 						</div>
 					</div>
 					<!-- ROW-4 END -->
+
 
 				</div>
 			</div>
@@ -587,122 +419,14 @@ $c = new Controller();
 		</div>
 		<!--End Footer-->
 
-		<!-- Sidebar -->
-		<div class="sidebar sidebar-right sidebar-animate">
-			<div class="sidebar-icon">
-				<a href="#" class="text-right float-right text-dark fs-20" data-toggle="sidebar-right" data-target=".sidebar-right"><i class="fe fe-x"></i></a>
-			</div>
-			<div class="sidebar-body">
-				<h5>Todo</h5>
-				<div class="d-flex p-3">
-					<label class="ckbox"><input checked type="checkbox"><span>Hangout With friends</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input type="checkbox"><span>Prepare for presentation</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input checked type="checkbox"><span>System Updated</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input type="checkbox"><span>Do something more</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input type="checkbox"><span>System Updated</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top">
-					<label class="ckbox"><input type="checkbox"><span>Find an Idea</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<div class="d-flex p-3 border-top mb-0">
-					<label class="ckbox"><input type="checkbox"><span>Project review</span></label>
-					<span class="ml-auto">
-						<i class="fe fe-edit-2 text-primary mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Edit"></i>
-						<i class="fe fe-trash-2 text-danger mr-2" data-toggle="tooltip" title="" data-placement="top" data-original-title="Delete"></i>
-					</span>
-				</div>
-				<h5>Overview</h5>
-				<div class="p-4">
-					<div class="main-traffic-detail-item">
-						<div>
-							<span>Founder &amp; CEO</span> <span>24</span>
-						</div>
-						<div class="progress">
-							<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="20" class="progress-bar progress-bar-xs wd-20p" role="progressbar"></div>
-						</div><!-- progress -->
-					</div>
-					<div class="main-traffic-detail-item">
-						<div>
-							<span>UX Designer</span> <span>1</span>
-						</div>
-						<div class="progress">
-							<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="15" class="progress-bar progress-bar-xs bg-secondary wd-15p" role="progressbar"></div>
-						</div><!-- progress -->
-					</div>
-					<div class="main-traffic-detail-item">
-						<div>
-							<span>Recruitment</span> <span>87</span>
-						</div>
-						<div class="progress">
-							<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="45" class="progress-bar progress-bar-xs bg-success wd-45p" role="progressbar"></div>
-						</div><!-- progress -->
-					</div>
-					<div class="main-traffic-detail-item">
-						<div>
-							<span>Software Engineer</span> <span>32</span>
-						</div>
-						<div class="progress">
-							<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-info wd-25p" role="progressbar"></div>
-						</div><!-- progress -->
-					</div>
-					<div class="main-traffic-detail-item">
-						<div>
-							<span>Project Manager</span> <span>32</span>
-						</div>
-						<div class="progress">
-							<div aria-valuemax="100" aria-valuemin="0" aria-valuenow="25" class="progress-bar progress-bar-xs bg-danger wd-25p" role="progressbar"></div>
-						</div><!-- progress -->
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- End Sidebar -->
+
 
 		<!-- Edit Modal -->
 		<div class="modal fade" id="modaledit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="staticBackdropLabel">Editar Region</h5>
+						<h5 class="modal-title" id="staticBackdropLabel">Edición</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -715,7 +439,6 @@ $c = new Controller();
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<!-- End Page -->
 
@@ -765,11 +488,13 @@ $c = new Controller();
 	<script src="assets/js/sticky.js"></script>
 
 	<!-- Custom js -->
+	<!-- Custom js -->
 	<script src="assets/js/custom.js"></script>
 	<script src="JsFunctions/Alert/toastify.js"></script>
 	<script src="JsFunctions/Alert/sweetalert2.all.min.js"></script>
 	<script src="JsFunctions/Alert/alert.js"></script>
 	<script src="JsFunctions/Regiones.js"></script>
+
 
 
 </body>
